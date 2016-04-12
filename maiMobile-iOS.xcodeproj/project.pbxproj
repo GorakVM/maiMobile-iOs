@@ -13,6 +13,7 @@
 		C18A82471CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C18A82451CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld */; };
 		C18A82491CBC255500FB3087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C18A82481CBC255500FB3087 /* Assets.xcassets */; };
 		C18A824C1CBC255500FB3087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A824A1CBC255500FB3087 /* LaunchScreen.storyboard */; };
+		C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C18A82481CBC255500FB3087 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C18A824B1CBC255500FB3087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C18A824D1CBC255500FB3087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		C18A823D1CBC255500FB3087 /* maiMobile-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				C1FE35231CBD4D1400F7B745 /* WebServices */,
 				C18A823E1CBC255500FB3087 /* AppDelegate.swift */,
 				C18A82401CBC255500FB3087 /* ViewController.swift */,
 				C18A82421CBC255500FB3087 /* Main.storyboard */,
@@ -65,6 +68,14 @@
 				C18A82451CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld */,
 			);
 			path = "maiMobile-iOS";
+			sourceTree = "<group>";
+		};
+		C1FE35231CBD4D1400F7B745 /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */,
+			);
+			name = WebServices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 			files = (
 				C18A82411CBC255500FB3087 /* ViewController.swift in Sources */,
 				C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */,
+				C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */,
 				C18A82471CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
