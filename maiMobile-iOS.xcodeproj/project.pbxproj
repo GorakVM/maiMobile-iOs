@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A823E1CBC255500FB3087 /* AppDelegate.swift */; };
-		C18A82411CBC255500FB3087 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A82401CBC255500FB3087 /* ViewController.swift */; };
 		C18A82441CBC255500FB3087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A82421CBC255500FB3087 /* Main.storyboard */; };
 		C18A82471CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C18A82451CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld */; };
 		C18A82491CBC255500FB3087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C18A82481CBC255500FB3087 /* Assets.xcassets */; };
@@ -19,7 +18,6 @@
 /* Begin PBXFileReference section */
 		C18A823B1CBC255500FB3087 /* maiMobile-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "maiMobile-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18A823E1CBC255500FB3087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C18A82401CBC255500FB3087 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C18A82431CBC255500FB3087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C18A82461CBC255500FB3087 /* maiMobile_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = maiMobile_iOS.xcdatamodel; sourceTree = "<group>"; };
 		C18A82481CBC255500FB3087 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 			children = (
 				C1FE35231CBD4D1400F7B745 /* WebServices */,
 				C18A823E1CBC255500FB3087 /* AppDelegate.swift */,
-				C18A82401CBC255500FB3087 /* ViewController.swift */,
 				C18A82421CBC255500FB3087 /* Main.storyboard */,
 				C18A82481CBC255500FB3087 /* Assets.xcassets */,
 				C18A824A1CBC255500FB3087 /* LaunchScreen.storyboard */,
@@ -150,7 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C18A82411CBC255500FB3087 /* ViewController.swift in Sources */,
 				C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */,
 				C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */,
 				C18A82471CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld in Sources */,
