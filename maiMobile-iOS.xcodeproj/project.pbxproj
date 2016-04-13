@@ -107,7 +107,7 @@
 				TargetAttributes = {
 					C18A823A1CBC255500FB3087 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = G58ZDM5J9U;
+						DevelopmentTeam = SUWJS93SXL;
 					};
 				};
 			};
@@ -268,7 +268,7 @@
 				INFOPLIST_FILE = "maiMobile-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mobi.maiMobile.maiMobile-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "pt.gov.mai.mai-mobile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -281,7 +281,7 @@
 				INFOPLIST_FILE = "maiMobile-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "mobi.maiMobile.maiMobile-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "pt.gov.mai.mai-mobile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
