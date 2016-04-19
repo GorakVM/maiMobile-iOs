@@ -13,6 +13,7 @@
 		C18A82471CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C18A82451CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld */; };
 		C18A82491CBC255500FB3087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C18A82481CBC255500FB3087 /* Assets.xcassets */; };
 		C18A824C1CBC255500FB3087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A824A1CBC255500FB3087 /* LaunchScreen.storyboard */; };
+		C1A08DD01CC40D5400906EFE /* ServiceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */; };
 		C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */; };
 		C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */; };
 		C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */; };
@@ -28,6 +29,7 @@
 		C18A82481CBC255500FB3087 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C18A824B1CBC255500FB3087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C18A824D1CBC255500FB3087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceBuilder.swift; sourceTree = "<group>"; };
 		C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaiAPI.swift; sourceTree = "<group>"; };
 		C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesAPIService.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				C12CB0DB1CC541E600758F19 /* Service.swift */,
+				C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */,
 				C18A823D1CBC255500FB3087 /* maiMobile-iOS */,
 				C18A823C1CBC255500FB3087 /* Products */,
 			);
@@ -174,6 +177,7 @@
 				C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */,
 				C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */,
 				C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */,
+				C1A08DD01CC40D5400906EFE /* ServiceBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
