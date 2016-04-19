@@ -13,6 +13,7 @@
 		C18A82491CBC255500FB3087 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C18A82481CBC255500FB3087 /* Assets.xcassets */; };
 		C18A824C1CBC255500FB3087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A824A1CBC255500FB3087 /* LaunchScreen.storyboard */; };
 		C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */; };
+		C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FE35271CBD57B200F7B745 /* XMLParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C18A824B1CBC255500FB3087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C18A824D1CBC255500FB3087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesAPIService.swift; sourceTree = "<group>"; };
+		C1FE35271CBD57B200F7B745 /* XMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,14 @@
 				C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */,
 			);
 			name = WebServices;
+			sourceTree = "<group>";
+		};
+		C1FE35261CBD57A200F7B745 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				C1FE35271CBD57B200F7B745 /* XMLParser.swift */,
+			);
+			name = Parser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +160,7 @@
 				C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */,
 				C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */,
 				C18A82471CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld in Sources */,
+				C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +316,7 @@
 				C18A82521CBC255500FB3087 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
