@@ -10,19 +10,32 @@ import Foundation
 
 class ServicesAPIService {
     
-    private let baseURLString = ""
+    private let baseURLString = "https://freedatagenerator.s3.amazonaws.com/pk0gSSJ5kUkM.xml"
     
-    func request(completion: (NSData) -> Void) {
+    // for protection in case that the parser gets called multiple times
+    private var parsers = [XMLParser]()
+    
+    private func request() -> NSMutableURLRequest {
         let url = NSURL(string: baseURLString)!
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
         
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
+        return request
+    }
+    
+    func getDictionaryFromData(completion: (AnyObject) -> Void)  {
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request()) { (data, response, error) in
             guard let httpResponse = response as? NSHTTPURLResponse, xmlData = data else {
+                print("ServicesAPIService response: \(response) error: \(error)")
                 return
             }
+            
             if httpResponse.statusCode == 200 {
-                completion(xmlData)
+                let parser = XMLParser(data: xmlData, handler: { (objectArray) in
+                    completion(objectArray)
+                })
+                self.parsers.append(parser)
+                
             } else {
                 print("servicesAPIService statusCode: \(httpResponse.statusCode)")
                 print("data: \(xmlData)")
