@@ -59,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C154F7CC1CC7D3B600A8A171 /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */,
+			);
+			name = Builders;
+			sourceTree = "<group>";
+		};
 		C18A82321CBC255500FB3087 = {
 			isa = PBXGroup;
 			children = (
@@ -79,11 +87,12 @@
 			isa = PBXGroup;
 			children = (
 				C1FA47C91CC664DF00458920 /* Model */,
+				C154F7CC1CC7D3B600A8A171 /* Builders */,
 				C1FE35231CBD4D1400F7B745 /* WebServices */,
 				C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */,
 				C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */,
 				C1FA47C81CC664B400458920 /* MaiServices */,
-				C1FE35261CBD57A200F7B745 /* Parser */,
+				C1FE35261CBD57A200F7B745 /* Parsers */,
 				C18A823E1CBC255500FB3087 /* AppDelegate.swift */,
 				C18A82421CBC255500FB3087 /* Main.storyboard */,
 				C18A82481CBC255500FB3087 /* Assets.xcassets */,
@@ -110,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				C12CB0DB1CC541E600758F19 /* Service.swift */,
-				C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */,
 				C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */,
 			);
 			name = Model;
@@ -124,12 +132,12 @@
 			name = WebServices;
 			sourceTree = "<group>";
 		};
-		C1FE35261CBD57A200F7B745 /* Parser */ = {
+		C1FE35261CBD57A200F7B745 /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
 				C1FE35271CBD57B200F7B745 /* XMLParser.swift */,
 			);
-			name = Parser;
+			name = Parsers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
