@@ -10,7 +10,7 @@ import Foundation
 
 class ServicesAPIService {
     
-    private let baseURLString = "https://freedatagenerator.s3.amazonaws.com/pk0gSSJ5kUkM.xml"
+    private let baseURLString = "https://freedatagenerator.s3.amazonaws.com/bPYySe1W2rbA.xml"
     
     // for protection in case that the parser gets called multiple times
     private var parsers = [XMLParser]()
