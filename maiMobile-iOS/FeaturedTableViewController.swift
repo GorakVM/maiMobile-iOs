@@ -9,16 +9,10 @@
 import UIKit
 
 class FeaturedTableViewController: ServiceController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    // MARK: - Table view data source
+
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return services.count
+        return featuredServices.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,9 +20,12 @@ class FeaturedTableViewController: ServiceController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = services[indexPath.section].title
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellNibIdentifier, forIndexPath: indexPath) as! ServicesTableViewCell
+        cell.titleLabel.text = featuredServices[indexPath.section].title
+        cell.noteLabel.text = featuredServices[indexPath.section].note
         return cell
     }
+    
+   
     
 }

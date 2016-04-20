@@ -9,11 +9,9 @@
 import UIKit
 
 class ServicesTableViewController: ServiceController {
-    
-    // MARK: - Table view data source
-    
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchResultController.fetchedObjects?.count ?? 0
+        return services.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -21,14 +19,10 @@ class ServicesTableViewController: ServiceController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        cell.textLabel?.text = services[indexPath.section].title
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellNibIdentifier, forIndexPath: indexPath) as! ServicesTableViewCell
+        cell.titleLabel.text = services[indexPath.section].title
+        cell.noteLabel.text = services[indexPath.section].note
         return cell
     }
-    
-    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return services[section].note
-    }
-    
     
 }
