@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C12CB0DC1CC541E600758F19 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CB0DB1CC541E600758F19 /* Service.swift */; };
+		C154F7C11CC6A46200A8A171 /* FeaturedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */; };
 		C154F7C31CC78C5C00A8A171 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */; };
 		C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A823E1CBC255500FB3087 /* AppDelegate.swift */; };
 		C18A82441CBC255500FB3087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A82421CBC255500FB3087 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		C12CB0DB1CC541E600758F19 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Service.swift; path = "maiMobile-iOS/Service.swift"; sourceTree = "<group>"; };
+		C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedTableViewController.swift; sourceTree = "<group>"; };
 		C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C18A823B1CBC255500FB3087 /* maiMobile-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "maiMobile-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18A823E1CBC255500FB3087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				C1FA47A51CC64D0E00458920 /* ServiceController.swift */,
 				C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */,
+				C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */,
 			);
 			name = MaiServices;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */,
 				C154F7C31CC78C5C00A8A171 /* CoreDataStack.swift in Sources */,
 				C18A82471CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld in Sources */,
+				C154F7C11CC6A46200A8A171 /* FeaturedTableViewController.swift in Sources */,
 				C12CB0DC1CC541E600758F19 /* Service.swift in Sources */,
 				C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */,
 				C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */,
