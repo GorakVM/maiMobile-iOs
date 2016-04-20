@@ -18,6 +18,7 @@
 		C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */; };
 		C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */; };
 		C1FA47A61CC64D0E00458920 /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FA47A51CC64D0E00458920 /* ServiceController.swift */; };
+		C1FA47CB1CC674B700458920 /* ServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */; };
 		C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */; };
 		C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FE35271CBD57B200F7B745 /* XMLParser.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaiAPI.swift; sourceTree = "<group>"; };
 		C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		C1FA47A51CC64D0E00458920 /* ServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceController.swift; path = ../ServiceController.swift; sourceTree = "<group>"; };
+		C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewController.swift; sourceTree = "<group>"; };
 		C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesAPIService.swift; sourceTree = "<group>"; };
 		C1FE35271CBD57B200F7B745 /* XMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				C1FA47A51CC64D0E00458920 /* ServiceController.swift */,
+				C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */,
 			);
 			name = MaiServices;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */,
 				C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */,
 				C1A08DD01CC40D5400906EFE /* ServiceBuilder.swift in Sources */,
+				C1FA47CB1CC674B700458920 /* ServicesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
