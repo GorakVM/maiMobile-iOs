@@ -13,13 +13,13 @@ class Fetcher {
     
     class func sharedMainContext() -> NSManagedObjectContext {
         let mainContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        mainContext.persistentStoreCoordinator = AppDelegate().persistentStoreCoordinator
+        mainContext.persistentStoreCoordinator = CoreDataStack.sharedPersistentCoordinator()
         return mainContext
     }
     
     func loadServicesToCoreData() {
         let privateManagedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        privateManagedObjectContext.persistentStoreCoordinator = Fetcher.sharedMainContext().persistentStoreCoordinator
+        privateManagedObjectContext.persistentStoreCoordinator = CoreDataStack.sharedPersistentCoordinator()
         
         MaiAPI().getServices { (servicesArray) in
             
@@ -34,6 +34,6 @@ class Fetcher {
         }
         
     }
-   
+    
     
 }
