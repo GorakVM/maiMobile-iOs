@@ -34,6 +34,14 @@ class Fetcher {
         
     }
     
+    func loadGnrToCoreData() {
+        let privateContext = privateManagedObjectContext()
+        MaiAPI().getGnr { (gnrArray) in
+            GnrBuilder().gnrFromArray(gnrArray, inContext: privateContext)
+            self.saveContext(privateContext)
+        }
+    }
+    
     
     func saveContext(managedContext: NSManagedObjectContext) {
         do {
