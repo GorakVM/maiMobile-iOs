@@ -42,6 +42,13 @@ class Fetcher {
         }
     }
     
+    func loadPspToCoreData() {
+        let privateContext = privateManagedObjectContext()
+        MaiAPI().getPsp { (pspArray) in
+            PspBuilder().pspFromArray(pspArray, inContext: privateContext)
+            self.saveContext(privateContext)
+        }
+    }
     
     func saveContext(managedContext: NSManagedObjectContext) {
         do {
