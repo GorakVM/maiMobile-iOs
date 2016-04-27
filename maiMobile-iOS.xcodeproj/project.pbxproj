@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C12CB0DC1CC541E600758F19 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CB0DB1CC541E600758F19 /* Service.swift */; };
 		C13DCDAA1CC8D9B300AA9098 /* Gnr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DCDA81CC8D9B300AA9098 /* Gnr.swift */; };
+		C13DCDAC1CC8DF0600AA9098 /* GnrBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */; };
 		C154F7C11CC6A46200A8A171 /* FeaturedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */; };
 		C154F7C31CC78C5C00A8A171 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */; };
 		C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C61CC7C48300A8A171 /* ServicesTableViewCell.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		C12CB0DB1CC541E600758F19 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		C13DCDA81CC8D9B300AA9098 /* Gnr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gnr.swift; sourceTree = "<group>"; };
+		C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnrBuilder.swift; sourceTree = "<group>"; };
 		C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedTableViewController.swift; sourceTree = "<group>"; };
 		C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C154F7C61CC7C48300A8A171 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServicesTableViewCell.swift; path = ../ServicesTableViewCell.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */,
+				C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */,
 			);
 			name = Builders;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				C154F7C31CC78C5C00A8A171 /* CoreDataStack.swift in Sources */,
 				C188E7AF1CCA3F3400644F01 /* MapViewController.swift in Sources */,
 				C18A82471CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld in Sources */,
+				C13DCDAC1CC8DF0600AA9098 /* GnrBuilder.swift in Sources */,
 				C154F7C11CC6A46200A8A171 /* FeaturedTableViewController.swift in Sources */,
 				C12CB0DC1CC541E600758F19 /* Service.swift in Sources */,
 				C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */,
