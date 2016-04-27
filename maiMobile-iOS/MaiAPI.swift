@@ -24,4 +24,10 @@ class MaiAPI {
         }
     }
     
+    func getPsp(result: AnyObject -> Void) {
+        PspApiService().getDictionaryFromData { (objects) in
+            result(objects)
+        }
+    }
+    
 }
