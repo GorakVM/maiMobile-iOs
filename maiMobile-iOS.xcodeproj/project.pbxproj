@@ -79,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C13DCDAD1CC9239100AA9098 /* Main ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C13DCDAE1CC923AF00AA9098 /* Segurança */,
+				C1FA47C81CC664B400458920 /* MaiServices */,
+			);
+			name = "Main ViewControllers";
+			sourceTree = "<group>";
+		};
 		C13DCDAE1CC923AF00AA9098 /* Segurança */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,11 +129,11 @@
 			children = (
 				C1FA47C91CC664DF00458920 /* Model */,
 				C154F7CC1CC7D3B600A8A171 /* Builders */,
+				C1FE35261CBD57A200F7B745 /* Parsers */,
 				C1FE35231CBD4D1400F7B745 /* WebServices */,
 				C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */,
 				C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */,
-				C1FA47C81CC664B400458920 /* MaiServices */,
-				C1FE35261CBD57A200F7B745 /* Parsers */,
+				C13DCDAD1CC9239100AA9098 /* Main ViewControllers */,
 				C18A823E1CBC255500FB3087 /* AppDelegate.swift */,
 				C18A82421CBC255500FB3087 /* Main.storyboard */,
 				C18A82481CBC255500FB3087 /* Assets.xcassets */,
