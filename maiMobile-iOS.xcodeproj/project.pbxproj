@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C12CB0DC1CC541E600758F19 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CB0DB1CC541E600758F19 /* Service.swift */; };
+		C13DCDAA1CC8D9B300AA9098 /* Gnr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DCDA81CC8D9B300AA9098 /* Gnr.swift */; };
 		C154F7C11CC6A46200A8A171 /* FeaturedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */; };
 		C154F7C31CC78C5C00A8A171 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */; };
 		C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C61CC7C48300A8A171 /* ServicesTableViewCell.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		C12CB0DB1CC541E600758F19 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		C13DCDA81CC8D9B300AA9098 /* Gnr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gnr.swift; sourceTree = "<group>"; };
 		C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedTableViewController.swift; sourceTree = "<group>"; };
 		C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C154F7C61CC7C48300A8A171 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServicesTableViewCell.swift; path = ../ServicesTableViewCell.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				C188E7A51CCA3AB200644F01 /* Psp.swift */,
+				C13DCDA81CC8D9B300AA9098 /* Gnr.swift */,
 				C12CB0DB1CC541E600758F19 /* Service.swift */,
 				C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */,
 			);
@@ -226,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C13DCDAA1CC8D9B300AA9098 /* Gnr.swift in Sources */,
 				C1FA47A61CC64D0E00458920 /* ServiceController.swift in Sources */,
 				C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */,
 				C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */,
