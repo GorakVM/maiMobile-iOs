@@ -40,6 +40,7 @@ class XMLParser: NSObject, NSXMLParserDelegate {
         dictionary[elementName] = charactersFound
         array.append(dictionary)
         dictionary.removeAll()
+        charactersFound.removeAll()
         elementFound = false
     }
     
