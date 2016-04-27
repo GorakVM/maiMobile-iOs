@@ -12,6 +12,7 @@
 		C154F7C31CC78C5C00A8A171 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */; };
 		C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C61CC7C48300A8A171 /* ServicesTableViewCell.swift */; };
 		C154F7C91CC7C48300A8A171 /* ServicesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C154F7C71CC7C48300A8A171 /* ServicesTableViewCell.xib */; };
+		C188E7A71CCA3AB200644F01 /* Psp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188E7A51CCA3AB200644F01 /* Psp.swift */; };
 		C188E7AF1CCA3F3400644F01 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188E7AE1CCA3F3400644F01 /* MapViewController.swift */; };
 		C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A823E1CBC255500FB3087 /* AppDelegate.swift */; };
 		C18A82441CBC255500FB3087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A82421CBC255500FB3087 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C154F7C61CC7C48300A8A171 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServicesTableViewCell.swift; path = ../ServicesTableViewCell.swift; sourceTree = "<group>"; };
 		C154F7C71CC7C48300A8A171 /* ServicesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ServicesTableViewCell.xib; path = ../ServicesTableViewCell.xib; sourceTree = "<group>"; };
+		C188E7A51CCA3AB200644F01 /* Psp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Psp.swift; path = ../Psp.swift; sourceTree = "<group>"; };
 		C188E7AE1CCA3F3400644F01 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C18A823B1CBC255500FB3087 /* maiMobile-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "maiMobile-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18A823E1CBC255500FB3087 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		C1FA47C91CC664DF00458920 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C188E7A51CCA3AB200644F01 /* Psp.swift */,
 				C12CB0DB1CC541E600758F19 /* Service.swift */,
 				C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */,
 			);
@@ -235,6 +238,7 @@
 				C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */,
 				C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */,
 				C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */,
+				C188E7A71CCA3AB200644F01 /* Psp.swift in Sources */,
 				C1A08DD01CC40D5400906EFE /* ServiceBuilder.swift in Sources */,
 				C1FA47CB1CC674B700458920 /* ServicesTableViewController.swift in Sources */,
 			);
