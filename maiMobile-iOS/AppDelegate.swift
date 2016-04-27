@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //            print("dictionary: \(dictionary)")
         //        }
         Fetcher().loadServicesToCoreData()
+        Fetcher().loadGnrToCoreData()
+        Fetcher().loadPspToCoreData()
         return true
     }
     
