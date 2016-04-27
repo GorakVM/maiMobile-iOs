@@ -43,6 +43,8 @@ class ServiceBuilder {
                 if !urlString.isEmpty {
                     xmlService["Url"] = urlString
                 }
+            } else {
+                xmlService["Url"] = ""
             }
             
             if let service = values["Service"] {
@@ -63,14 +65,13 @@ class ServiceBuilder {
                     
                 }
                 
-                
             }
             
         } //End for
         
     }
     
-    func setServiceManagedObject(service: Service, xmlService: [String : AnyObject]) -> NSManagedObject {
+    func setServiceManagedObject(service: Service, xmlService: [String : AnyObject]) {
         service.remoteId = Int(xmlService["ServiceID"] as! String)!
         var boolValue = false
         if (xmlService["Highlight"] as! String) == "true" {
@@ -80,7 +81,8 @@ class ServiceBuilder {
         service.position = Int(xmlService["Position"] as! String)!
         service.note = (xmlService["Description"] as! String)
         service.title = (xmlService["Title"] as! String)
-        return service
+        service.url = (xmlService["Url"] as! String)
+        
     }
     
 }
