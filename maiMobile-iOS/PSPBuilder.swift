@@ -48,15 +48,26 @@ class PspBuilder {
     
     func setPspManagedObject(pspManagedObject: Psp, dictionary: NSMutableDictionary) {
         pspManagedObject.remoteId = dictionary["OBJECTID"] as! Int
-        pspManagedObject.comand = dictionary["COMANDO"] as! String
-        pspManagedObject.abbreviation = dictionary["ABREV"] as! String
-        pspManagedObject.name = dictionary["NOME"] as! String
-        pspManagedObject.desc = dictionary["DESCRICAO"] as! String
-        pspManagedObject.address = dictionary["MORADA"] as! String
-        pspManagedObject.postalCode = dictionary["CP7"] as! String
-        pspManagedObject.township = dictionary["CONCELHO"] as! String
-        pspManagedObject.district = dictionary["DISTRITO"] as! String
-        pspManagedObject.phone =  String(dictionary["TELEFONE"] as! Int)
+        pspManagedObject.name = (dictionary["NOME"] as! String)
+        pspManagedObject.desc = (dictionary["DESCRICAO"] as! String)
+        
+        if let phone = dictionary["TELEFONE"] as? Int,
+            address = dictionary["MORADA"] as? String,
+            township = dictionary["CONCELHO"] as? String,
+            district = dictionary["DISTRITO"] as? String,
+            postalCode = dictionary["CP7"] as? String,
+            abbreviation = dictionary["ABREV"] as? String,
+            comand = dictionary["COMANDO"] as? String {
+            
+            pspManagedObject.phone =  String(phone)
+            pspManagedObject.postalCode = postalCode
+            pspManagedObject.address = address
+            pspManagedObject.township = township
+            pspManagedObject.district = district
+            pspManagedObject.comand = comand
+            pspManagedObject.abbreviation = abbreviation
+            
+        }
         pspManagedObject.longitude = dictionary["x"] as! Double
         pspManagedObject.latitude = dictionary["y"] as! Double
         

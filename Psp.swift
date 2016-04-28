@@ -14,13 +14,13 @@ extension Psp {
     
     @NSManaged var address: String?
     @NSManaged var desc: String?
-    @NSManaged var district: String
+    @NSManaged var district: String?
     @NSManaged var latitude: NSNumber
     @NSManaged var longitude: NSNumber
     @NSManaged var name: String?
     @NSManaged var phone: String?
     @NSManaged var remoteId: NSNumber?
-    @NSManaged var township: String
+    @NSManaged var township: String?
     @NSManaged var comand: String?
     @NSManaged var postalCode: String?
     @NSManaged var abbreviation: String?

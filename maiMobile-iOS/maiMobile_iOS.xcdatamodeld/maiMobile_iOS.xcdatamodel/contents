@@ -12,14 +12,14 @@
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comand" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="district" attributeType="String" syncable="YES"/>
+        <attribute name="district" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postalCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remoteId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="township" attributeType="String" syncable="YES"/>
+        <attribute name="township" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Service" representedClassName=".Service" syncable="YES">
         <attribute name="highlight" attributeType="Boolean" syncable="YES"/>
