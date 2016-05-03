@@ -15,8 +15,8 @@ extension Psp {
     @NSManaged var address: String?
     @NSManaged var desc: String?
     @NSManaged var district: String?
-    @NSManaged var latitude: NSNumber
-    @NSManaged var longitude: NSNumber
+    @NSManaged var latitude: Double
+    @NSManaged var longitude: Double
     @NSManaged var name: String?
     @NSManaged var phone: String?
     @NSManaged var remoteId: NSNumber?

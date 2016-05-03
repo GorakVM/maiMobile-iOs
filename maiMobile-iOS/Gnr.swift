@@ -14,8 +14,8 @@ extension Gnr {
     @NSManaged var remoteId: NSNumber
     @NSManaged var name: String?
     @NSManaged var type: String
-    @NSManaged var longitude: NSNumber
-    @NSManaged var latitude: NSNumber
+    @NSManaged var longitude: Double
+    @NSManaged var latitude: Double
     
 }
 
