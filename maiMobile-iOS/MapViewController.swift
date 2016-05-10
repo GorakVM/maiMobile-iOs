@@ -20,7 +20,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var locationManager = CLLocationManager()
     
     class CustomPointAnnotation: MKPointAnnotation {
-        var image: UIImage? = nil
+        var force: Force!
+        var image: UIImage!
     }
     
     var forceAnnotation = [CustomPointAnnotation]()
@@ -46,10 +47,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             locationManager.startUpdatingLocation()
         }
         
-        let forces = forcesFetchResultController.fetchedObjects as! [Force]
-        
-        for force in forces {
+        for force in forcesFetchResultController.fetchedObjects as! [Force] {
             let annotation = CustomPointAnnotation()
+            annotation.force = force
             annotation.coordinate = CLLocationCoordinate2D(latitude: force.latitude, longitude: force.longitude)
             annotation.title = force.name
             switch force.forceType {
@@ -77,7 +77,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         print("userLocation: \(userLocation)")
-        
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -89,13 +88,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let reusableIdentifier = "annotation"
         var reusableAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reusableIdentifier)
         
-        if let annotationView = reusableAnnotationView as? MKPinAnnotationView {
+        if let annotationView = reusableAnnotationView {
             annotationView.annotation = annotation
-            annotationView.animatesDrop = true
+            
         } else {
             reusableAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
             
         }
+        
+        let rightButton = UIButton(type: .DetailDisclosure)
+        reusableAnnotationView?.rightCalloutAccessoryView = rightButton
         
         if !(annotation is MKUserLocation) {
             let customPointAnnotation = annotation as! CustomPointAnnotation
@@ -107,9 +109,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         return nil
     }
     
-    
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        // send to detailTableViewController
+        if control == view.rightCalloutAccessoryView {
+            if let annotation = view.annotation as? CustomPointAnnotation {
+                guard annotation.force.forceType != Force.ForceType.Gnr.rawValue else {
+                    let coordinates = CLLocationCoordinate2D(latitude: annotation.force.latitude, longitude: annotation.force.longitude)
+                    let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                    let mapItem = MKMapItem(placemark: placemark)
+                    mapItem.name = annotation.title!
+                    let regionTeste = MKCoordinateRegionMakeWithDistance(placemark.coordinate, 10000, 10000)
+                    mapItem.openInMapsWithLaunchOptions([MKLaunchOptionsMapCenterKey : NSValue(MKCoordinate: regionTeste.center),MKLaunchOptionsMapSpanKey : NSValue(MKCoordinateSpan: regionTeste.span)])
+                    return
+                }
+                let detailTableViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailTableViewController") as! DetailTableViewController
+                detailTableViewController.psp = annotation.force as! Psp
+                navigationController?.pushViewController(detailTableViewController, animated: true)
+            }
+        }
         
     }
     
