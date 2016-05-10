@@ -18,7 +18,6 @@ class ServiceBuilder {
         var xmlService = [String : AnyObject]()
         for values in servicesArray {
             
-//            print("values: \(values)")
             if let description = values["Description"] as? String {
                 xmlService["Description"] = description
             }
@@ -77,7 +76,7 @@ class ServiceBuilder {
         if (xmlService["Highlight"] as! String) == "true" {
             boolValue = true
         }
-        service.highlight = boolValue
+        service.featured = boolValue
         service.position = Int(xmlService["Position"] as! String)!
         service.note = (xmlService["Description"] as! String)
         service.title = (xmlService["Title"] as! String)
