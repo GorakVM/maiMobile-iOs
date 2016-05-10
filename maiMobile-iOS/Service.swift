@@ -13,15 +13,15 @@ import Foundation
 import CoreData
 
 extension Service {
-
-    @NSManaged var highlight: Bool
+    
+    @NSManaged var featured: Bool
     @NSManaged var image: NSObject?
     @NSManaged var note: String?
     @NSManaged var position: Int
     @NSManaged var remoteId: Int
     @NSManaged var title: String?
     @NSManaged var url: String?
-
+    
 }
 
 class Service: NSManagedObject {
