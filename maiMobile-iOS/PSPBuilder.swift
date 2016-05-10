@@ -47,6 +47,7 @@ class PspBuilder {
     }
     
     func setPspManagedObject(pspManagedObject: Psp, dictionary: NSMutableDictionary) {
+        pspManagedObject.forceType = Force.ForceType.Psp.rawValue
         pspManagedObject.remoteId = dictionary["OBJECTID"] as! Int
         pspManagedObject.name = (dictionary["NOME"] as! String)
         pspManagedObject.desc = (dictionary["DESCRICAO"] as! String)

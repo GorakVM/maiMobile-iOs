@@ -56,6 +56,7 @@ class GnrBuilder {
         gnrManagedObject.type = dictionary["Hierarquia"] as! String
         gnrManagedObject.longitude = dictionary["x"] as! Double
         gnrManagedObject.latitude = dictionary["y"] as! Double
+        gnrManagedObject.forceType = Force.ForceType.Gnr.rawValue
     }
     
 }
