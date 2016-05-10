@@ -6,7 +6,7 @@
 //  Copyright © 2016 WATERDOG mobile. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class JSONParser {
     
