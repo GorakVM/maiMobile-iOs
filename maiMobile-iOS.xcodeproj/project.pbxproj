@@ -106,8 +106,8 @@
 			children = (
 				C1EF47BF1CD3757600EBF5E5 /* Utils.swift */,
 				C13DCDB31CC924BA00AA9098 /* SecurityBaseController.swift */,
-				C13DCDAF1CC923CB00AA9098 /* SecurityTableViewController.swift */,
 				C188E7AE1CCA3F3400644F01 /* MapViewController.swift */,
+				C13DCDAF1CC923CB00AA9098 /* SecurityTableViewController.swift */,
 				C188AB6E1CD7614800A8A8AE /* DetailTableViewController */,
 			);
 			name = "Segurança";
