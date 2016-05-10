@@ -6,15 +6,28 @@
 //  Copyright © 2016 WATERDOG mobile. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import CoreData
 
 class Fetcher {
     
-    class func sharedMainContext() -> NSManagedObjectContext {
+    let sharedMainContext: NSManagedObjectContext = {
         let mainContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         mainContext.persistentStoreCoordinator = CoreDataStack.sharedPersistentCoordinator()
         return mainContext
+    }()
+    
+    init() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(contextDidSave(_:)),
+            name: NSManagedObjectContextDidSaveNotification,
+            object: nil
+        )
+    }
+    
+    @objc func contextDidSave(notification: NSNotification) {
+        sharedMainContext.mergeChangesFromContextDidSaveNotification(notification)
     }
     
     func privateManagedObjectContext() -> NSManagedObjectContext {
@@ -28,7 +41,9 @@ class Fetcher {
         MaiAPI().getServices { (servicesArray) in
             privateContext.performBlock({
                 ServiceBuilder().servicesFromArray(servicesArray, inContext: privateContext)
-                self.saveContext(privateContext)
+                privateContext.performBlock({
+                    self.saveContext(privateContext)
+                })
             })
         }
         
@@ -38,7 +53,9 @@ class Fetcher {
         let privateContext = privateManagedObjectContext()
         MaiAPI().getGnr { (gnrArray) in
             GnrBuilder().gnrFromArray(gnrArray, inContext: privateContext)
-            self.saveContext(privateContext)
+            privateContext.performBlock({
+                self.saveContext(privateContext)
+            })
         }
     }
     
@@ -46,7 +63,9 @@ class Fetcher {
         let privateContext = privateManagedObjectContext()
         MaiAPI().getPsp { (pspArray) in
             PspBuilder().pspFromArray(pspArray, inContext: privateContext)
-            self.saveContext(privateContext)
+            privateContext.performBlock({
+                self.saveContext(privateContext)
+            })
         }
     }
     
