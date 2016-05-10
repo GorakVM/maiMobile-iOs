@@ -8,11 +8,9 @@
 
 import UIKit
 import CoreData
+import MapKit
 
-class SecurityBaseController: UIViewController, NSFetchedResultsControllerDelegate {
-    
-    var gnrFetchResultController: NSFetchedResultsController!
-    var pspFetchResultController: NSFetchedResultsController!
+class SecurityBaseController: UIViewController {
     
     var currentViewController = UIViewController()
     
@@ -38,23 +36,7 @@ class SecurityBaseController: UIViewController, NSFetchedResultsControllerDelega
     
     override func viewDidLoad() {
         let mapViewController = storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
-        let securityTableViewController = storyboard?.instantiateViewControllerWithIdentifier("SecurityTableViewController") as! SecurityTableViewController
-        
-        let gnrFetchRequest = NSFetchRequest(entityName: "Gnr")
-        gnrFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        gnrFetchResultController = NSFetchedResultsController(fetchRequest: gnrFetchRequest, managedObjectContext: Fetcher.sharedMainContext(), sectionNameKeyPath: nil, cacheName: nil)
-        try! gnrFetchResultController.performFetch()
-        gnrFetchResultController.delegate = self
-        
-        securityTableViewController.gnr = gnrFetchResultController.fetchedObjects as! [Gnr]
-        
-        let pspFetchRequest = NSFetchRequest(entityName: "Psp")
-        pspFetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        pspFetchResultController = NSFetchedResultsController(fetchRequest: pspFetchRequest, managedObjectContext: Fetcher.sharedMainContext(), sectionNameKeyPath: nil, cacheName: nil)
-        try! pspFetchResultController.performFetch()
-        pspFetchResultController.delegate = self
-        
-        securityTableViewController.psp = pspFetchResultController.fetchedObjects as! [Psp]
+        let securityTableViewController = storyboard!.instantiateViewControllerWithIdentifier("SecurityTableViewController") as! SecurityTableViewController
         
         currentViewController = mapViewController
         addChildViewController(mapViewController)
@@ -63,7 +45,5 @@ class SecurityBaseController: UIViewController, NSFetchedResultsControllerDelega
         mapViewController.didMoveToParentViewController(self)
         
     }
-    
-    
     
 }
