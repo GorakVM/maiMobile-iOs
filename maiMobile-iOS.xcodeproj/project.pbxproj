@@ -33,6 +33,7 @@
 		C1DF40DB1CD22AB2003D6156 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */; };
 		C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */; };
 		C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */; };
+		C1EF47C01CD3757600EBF5E5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EF47BF1CD3757600EBF5E5 /* Utils.swift */; };
 		C1FA47A61CC64D0E00458920 /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FA47A51CC64D0E00458920 /* ServiceController.swift */; };
 		C1FA47CB1CC674B700458920 /* ServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */; };
 		C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */; };
@@ -68,6 +69,7 @@
 		C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaiAPI.swift; sourceTree = "<group>"; };
 		C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		C1EF47BF1CD3757600EBF5E5 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C1FA47A51CC64D0E00458920 /* ServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceController.swift; path = ../ServiceController.swift; sourceTree = "<group>"; };
 		C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewController.swift; sourceTree = "<group>"; };
 		C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesAPIService.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		C13DCDAE1CC923AF00AA9098 /* Segurança */ = {
 			isa = PBXGroup;
 			children = (
+				C1EF47BF1CD3757600EBF5E5 /* Utils.swift */,
 				C13DCDB31CC924BA00AA9098 /* SecurityBaseController.swift */,
 				C13DCDAF1CC923CB00AA9098 /* SecurityTableViewController.swift */,
 				C188E7AE1CCA3F3400644F01 /* MapViewController.swift */,
@@ -291,6 +294,7 @@
 				C188E7A71CCA3AB200644F01 /* Psp.swift in Sources */,
 				C13DCDB01CC923CB00AA9098 /* SecurityTableViewController.swift in Sources */,
 				C1A08DD01CC40D5400906EFE /* ServiceBuilder.swift in Sources */,
+				C1EF47C01CD3757600EBF5E5 /* Utils.swift in Sources */,
 				C188E7A91CCA3ADC00644F01 /* PSPBuilder.swift in Sources */,
 				C1FA47CB1CC674B700458920 /* ServicesTableViewController.swift in Sources */,
 				C1C490A81CE1EB1700BB1019 /* Force.swift in Sources */,
