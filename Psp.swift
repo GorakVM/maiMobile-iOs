@@ -12,23 +12,18 @@ import CoreData
 
 extension Psp {
     
+    @NSManaged var abbreviation: String?
     @NSManaged var address: String?
+    @NSManaged var comand: String?
     @NSManaged var desc: String?
     @NSManaged var district: String?
-    @NSManaged var latitude: Double
-    @NSManaged var longitude: Double
-    @NSManaged var name: String?
     @NSManaged var phone: String?
-    @NSManaged var remoteId: NSNumber?
-    @NSManaged var township: String?
-    @NSManaged var comand: String?
     @NSManaged var postalCode: String?
-    @NSManaged var abbreviation: String?
+    @NSManaged var township: String?
     
 }
 
-
-class Psp: NSManagedObject {
+class Psp: Force {
 
 // Insert code here to add functionality to your managed object subclass
 

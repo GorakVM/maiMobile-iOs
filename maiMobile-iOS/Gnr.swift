@@ -11,17 +11,12 @@ import CoreData
 
 extension Gnr {
     
-    @NSManaged var remoteId: NSNumber
-    @NSManaged var name: String?
     @NSManaged var type: String
-    @NSManaged var longitude: Double
-    @NSManaged var latitude: Double
     
 }
 
-
-class Gnr: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-
+class Gnr: Force {
+    
+    // Insert code here to add functionality to your managed object subclass
+    
 }
