@@ -7,22 +7,44 @@
 //
 
 import UIKit
+import CoreData
 
-class ServicesTableViewController: ServiceController {
-
+class ServicesTableViewController: ServiceController, NSFetchedResultsControllerDelegate {
+    
+    var serviceFetchResultController: NSFetchedResultsController!
+    
+    let fetcher = Fetcher()
+    
+    override func viewDidLoad() {
+        tableView.rowHeight = 103
+        tableView.registerNib(UINib(nibName: "ServicesTableViewCell", bundle: nil), forCellReuseIdentifier: "serviceCell")
+        
+        let fetchRequest = NSFetchRequest(entityName: "Service")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "position", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "featured == %@", false)
+        serviceFetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: fetcher.sharedMainContext, sectionNameKeyPath: nil, cacheName: nil)
+        serviceFetchResultController.delegate = self
+        try! serviceFetchResultController.performFetch()
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return services.count
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return serviceFetchResultController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellNibIdentifier, forIndexPath: indexPath) as! ServicesTableViewCell
-        cell.titleLabel.text = services[indexPath.section].title
-        cell.noteLabel.text = services[indexPath.section].note
+        let service = serviceFetchResultController.objectAtIndexPath(indexPath) as! Service
+        cell.titleLabel.text = service.title
+        cell.noteLabel.text = service.note
         return cell
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.reloadData()
     }
     
 }
