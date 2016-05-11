@@ -17,12 +17,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var forcesFetchResultController: NSFetchedResultsController!
     let fetcher = Fetcher()
-    var locationManager = CLLocationManager()
+    
+    var mapDidZoomToRegion: Bool = false
     
     class CustomPointAnnotation: MKPointAnnotation {
         var force: Force!
         var image: UIImage!
     }
+    
+    let locationManager = CLLocationManager()
     
     var forceAnnotation = [CustomPointAnnotation]()
     
@@ -35,17 +38,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         forcesFetchResultController.delegate = self
         try! forcesFetchResultController.performFetch()
         
-        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.pausesLocationUpdatesAutomatically = true
-        locationManager.distanceFilter = 500
-        
-        let isLocationServicesEnabled = CLLocationManager.locationServicesEnabled()
-        
-        if isLocationServicesEnabled {
-            locationManager.startUpdatingLocation()
-        }
         
         for force in forcesFetchResultController.fetchedObjects as! [Force] {
             let annotation = CustomPointAnnotation()
@@ -64,19 +57,36 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
             forceAnnotation.append(annotation)
         }
-        
+    
         mapView.delegate = self
         mapView.showsUserLocation = true
         
-    }
+        if CLLocationManager.locationServicesEnabled() {
+            if let userLocation = mapView.userLocation.location {
+                setZoomToRegion(userLocation)
+            }
+        }
+        
+    }// end viewdidload
     
     func mapViewDidFinishLoadingMap(mapView: MKMapView) {
         setAnnotationsForVisibleRectInMap()
-        locationManager.stopUpdatingLocation()
     }
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         print("userLocation: \(userLocation)")
+        setZoomToRegion(userLocation.location!)
+    }
+    
+    func setZoomToRegion(location: CLLocation) {
+        if !mapDidZoomToRegion {
+            let span = MKCoordinateSpanMake(0.25, 0.25)
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: span)
+            mapView.setRegion(region, animated: true)
+            mapDidZoomToRegion = true
+        }
+        setAnnotationsForVisibleRectInMap()
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -126,15 +136,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 navigationController?.pushViewController(detailTableViewController, animated: true)
             }
         }
-        
-    }
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last!
-        let span = MKCoordinateSpanMake(0.25, 0.25)
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: span)
-        mapView.setRegion(region, animated: true)
         
     }
     
