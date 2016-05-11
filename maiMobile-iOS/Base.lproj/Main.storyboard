@@ -16,14 +16,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="6Id-id-ZFD" kind="relationship" relationship="viewControllers" id="RXg-Pz-VYL"/>
-                        <segue destination="j9J-4H-Fzf" kind="relationship" relationship="viewControllers" id="SVW-lU-LUi"/>
                         <segue destination="RW1-Cl-mLs" kind="relationship" relationship="viewControllers" id="clB-9F-wSW"/>
+                        <segue destination="j9J-4H-Fzf" kind="relationship" relationship="viewControllers" id="SVW-lU-LUi"/>
+                        <segue destination="6Id-id-ZFD" kind="relationship" relationship="viewControllers" id="RXg-Pz-VYL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zf2-mm-UeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="743" y="400"/>
+            <point key="canvasLocation" x="737" y="418"/>
         </scene>
         <!--Services Table View Controller-->
         <scene sceneID="Ncs-bh-rsC">
