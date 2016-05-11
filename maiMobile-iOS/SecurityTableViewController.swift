@@ -28,6 +28,7 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
     let fetcher = Fetcher()
     
     @IBOutlet weak var securityTableView: UITableView!
+
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBAction func barButtonItem(sender: UISegmentedControl) {
         setSelectedForceType()
@@ -37,7 +38,8 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.bananaColor()
+        segmentedControl.tintColor = UIColor.whiteColor()
         locationManager.requestWhenInUseAuthorization()
         
         let forceFetchRequest = NSFetchRequest(entityName: "Force")
