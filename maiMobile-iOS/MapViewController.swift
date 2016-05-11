@@ -31,33 +31,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.requestWhenInUseAuthorization()
         
         let fetchAllForces = NSFetchRequest(entityName: "Force")
         fetchAllForces.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         forcesFetchResultController = NSFetchedResultsController(fetchRequest: fetchAllForces, managedObjectContext: fetcher.sharedMainContext, sectionNameKeyPath: nil, cacheName: nil)
         forcesFetchResultController.delegate = self
         try! forcesFetchResultController.performFetch()
+        updateAnnotationsToMap()
         
-        locationManager.requestWhenInUseAuthorization()
-        
-        for force in forcesFetchResultController.fetchedObjects as! [Force] {
-            let annotation = CustomPointAnnotation()
-            annotation.force = force
-            annotation.coordinate = CLLocationCoordinate2D(latitude: force.latitude, longitude: force.longitude)
-            annotation.title = force.name
-            switch force.forceType {
-            case Force.ForceType.Gnr.rawValue:
-                annotation.image = UIImage.setImageToAnnotation((force as! Gnr).type)
-            case Force.ForceType.Psp.rawValue:
-                let psp = (force as! Psp)
-                annotation.subtitle = psp.desc!
-                annotation.image = UIImage(named: "psp")
-            default:
-                break
-            }
-            forceAnnotation.append(annotation)
-        }
-    
         mapView.delegate = self
         mapView.showsUserLocation = true
         
@@ -66,7 +48,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 setZoomToRegion(userLocation)
             }
         }
-        
+        setAnnotationsForVisibleRectInMap()
     }// end viewdidload
     
     func mapViewDidFinishLoadingMap(mapView: MKMapView) {
@@ -76,6 +58,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         print("userLocation: \(userLocation)")
         setZoomToRegion(userLocation.location!)
+        setAnnotationsForVisibleRectInMap()
     }
     
     func setZoomToRegion(location: CLLocation) {
@@ -151,7 +134,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    func updateAnnotationsToMap() {
+        for force in forcesFetchResultController.fetchedObjects as! [Force] {
+            let annotation = CustomPointAnnotation()
+            annotation.force = force
+            annotation.coordinate = CLLocationCoordinate2D(latitude: force.latitude, longitude: force.longitude)
+            annotation.title = force.name
+            switch force.forceType {
+            case Force.ForceType.Gnr.rawValue:
+                annotation.image = UIImage.setImageToAnnotation((force as! Gnr).type)
+            case Force.ForceType.Psp.rawValue:
+                let psp = (force as! Psp)
+                annotation.subtitle = psp.desc!
+                annotation.image = UIImage(named: "psp")
+            default:
+                break
+            }
+            forceAnnotation.append(annotation)
+        }
+    }
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        updateAnnotationsToMap()
         setAnnotationsForVisibleRectInMap()
     }
     
