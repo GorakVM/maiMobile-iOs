@@ -42,6 +42,13 @@ extension UIImage {
         
         return image
     }
-    
   
+    
+}
+
+extension UIColor {
+    
+    class func bananaColor() -> UIColor {
+        return UIColor(red:0.98, green:0.86, blue:0.18, alpha:1.00)
+    }
 }
