@@ -20,7 +20,7 @@ extension Service {
     @NSManaged var position: Int
     @NSManaged var remoteId: Int
     @NSManaged var title: String?
-    @NSManaged var url: String?
+    @NSManaged var url: NSURL
     
 }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Automatic">
     <entity name="Force" representedClassName=".Force" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
         <attribute name="forceType" attributeType="String" syncable="YES"/>
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -27,12 +28,12 @@
         <attribute name="position" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="remoteId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Force" positionX="-2484" positionY="18" width="128" height="118"/>
+        <element name="Force" positionX="-2484" positionY="-18" width="128" height="135"/>
         <element name="Gnr" positionX="-2511" positionY="152" width="128" height="58"/>
         <element name="Psp" positionX="-2340" positionY="117" width="128" height="163"/>
-        <element name="Service" positionX="-2664" positionY="81" width="128" height="148"/>
+        <element name="Service" positionX="-2664" positionY="81" width="128" height="150"/>
     </elements>
 </model>

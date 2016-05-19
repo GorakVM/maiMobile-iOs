@@ -42,12 +42,9 @@ class ServiceBuilder {
                 if !urlString.isEmpty {
                     xmlService["Url"] = urlString
                 }
-            } else {
-                xmlService["Url"] = ""
             }
             
             if let service = values["Service"] {
-                
                 let request = NSFetchRequest(entityName: "Service")
                 let id = Int(xmlService["ServiceID"] as! String)!
                 request.predicate = NSPredicate(format: "remoteId == %d", id)
@@ -61,9 +58,7 @@ class ServiceBuilder {
                 } else  {
                     let service = NSEntityDescription.insertNewObjectForEntityForName("Service", inManagedObjectContext: context) as! Service
                     setServiceManagedObject(service, xmlService: xmlService)
-                    
                 }
-                
             }
             
         } //End for
@@ -80,8 +75,9 @@ class ServiceBuilder {
         service.position = Int(xmlService["Position"] as! String)!
         service.note = (xmlService["Description"] as! String)
         service.title = (xmlService["Title"] as! String)
-        service.url = (xmlService["Url"] as! String)
-        
+        if let urlString = xmlService["Url"] as? String {
+            service.url = NSURL(string: urlString)!
+        }
     }
     
 }
