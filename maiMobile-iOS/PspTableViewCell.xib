@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+        </mutableArray>
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="9Xt-hj-tlY" customClass="PspTableViewCell" customModule="maiMobile_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="416" height="76"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Xt-hj-tlY" id="fZq-B5-CJK">
+                <rect key="frame" x="0.0" y="0.0" width="383" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9C8-Ib-m2C">
+                        <rect key="frame" x="56" y="8" width="269" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="idi-Tr-gXQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erg-S3-5lo">
+                        <rect key="frame" x="333" y="30" width="50" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="98B-cr-ibd"/>
+                            <constraint firstAttribute="height" constant="16" id="c4L-hI-3YO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="13"/>
+                        <color key="textColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeM-c0-AVv">
+                        <rect key="frame" x="56" y="34" width="269" height="33"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                        <color key="textColor" red="0.1647058824" green="0.20784313730000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gnrBlack" translatesAutoresizingMaskIntoConstraints="NO" id="lbo-hS-PQc">
+                        <rect key="frame" x="8" y="18" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Ifz-Eq-e6G"/>
+                            <constraint firstAttribute="width" constant="40" id="amD-MI-y2e"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lbo-hS-PQc" firstAttribute="centerY" secondItem="fZq-B5-CJK" secondAttribute="centerY" id="33b-lg-9jf"/>
+                    <constraint firstItem="lbo-hS-PQc" firstAttribute="leading" secondItem="fZq-B5-CJK" secondAttribute="leading" constant="8" id="5hQ-6c-iKO"/>
+                    <constraint firstItem="9C8-Ib-m2C" firstAttribute="leading" secondItem="fZq-B5-CJK" secondAttribute="leadingMargin" constant="48" id="D1P-BX-ssU"/>
+                    <constraint firstItem="erg-S3-5lo" firstAttribute="leading" secondItem="9C8-Ib-m2C" secondAttribute="trailing" constant="8" symbolic="YES" id="HAO-AG-cH1"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="MeM-c0-AVv" secondAttribute="bottom" id="Q71-3Y-N8Y"/>
+                    <constraint firstItem="erg-S3-5lo" firstAttribute="centerY" secondItem="fZq-B5-CJK" secondAttribute="centerY" id="V3b-Ys-LOn"/>
+                    <constraint firstItem="9C8-Ib-m2C" firstAttribute="top" secondItem="fZq-B5-CJK" secondAttribute="topMargin" id="WhT-wh-f2I"/>
+                    <constraint firstItem="MeM-c0-AVv" firstAttribute="leading" secondItem="fZq-B5-CJK" secondAttribute="leadingMargin" constant="48" id="bXD-gF-uA7"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="erg-S3-5lo" secondAttribute="trailing" constant="-8" id="mZj-0V-dos"/>
+                    <constraint firstItem="erg-S3-5lo" firstAttribute="leading" secondItem="MeM-c0-AVv" secondAttribute="trailing" constant="8" symbolic="YES" id="osQ-Yc-0pj"/>
+                    <constraint firstItem="MeM-c0-AVv" firstAttribute="top" secondItem="9C8-Ib-m2C" secondAttribute="bottom" constant="8" id="uwr-hQ-3il"/>
+                    <constraint firstItem="9C8-Ib-m2C" firstAttribute="top" secondItem="fZq-B5-CJK" secondAttribute="topMargin" id="wfa-14-s5V"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="rightDetailLabel" destination="erg-S3-5lo" id="sKz-h8-rWr"/>
+                <outlet property="subtitleLabel" destination="MeM-c0-AVv" id="MM9-pf-XeB"/>
+                <outlet property="titleLabel" destination="9C8-Ib-m2C" id="FHi-nH-1Rg"/>
+            </connections>
+            <point key="canvasLocation" x="337" y="322"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="gnrBlack" width="42" height="42"/>
+    </resources>
+</document>
