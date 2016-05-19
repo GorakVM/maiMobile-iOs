@@ -42,6 +42,7 @@ class ServicesTableViewController: ServiceController, NSFetchedResultsController
         let service = serviceFetchResultController.objectAtIndexPath(indexPath) as! Service
         cell.titleLabel.text = service.title
         cell.noteLabel.text = service.note
+        cell.imageview.image = UIImage(data: NSData(contentsOfURL: service.imageUrl)!)
         return cell
     }
     

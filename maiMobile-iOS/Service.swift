@@ -15,7 +15,7 @@ import CoreData
 extension Service {
     
     @NSManaged var featured: Bool
-    @NSManaged var image: NSObject?
+    @NSManaged var imageUrl: NSURL
     @NSManaged var note: String?
     @NSManaged var position: Int
     @NSManaged var remoteId: Int
