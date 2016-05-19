@@ -18,6 +18,7 @@
 		C154F7C91CC7C48300A8A171 /* ServicesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C154F7C71CC7C48300A8A171 /* ServicesTableViewCell.xib */; };
 		C154F7CB1CC7D37000A8A171 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7CA1CC7D37000A8A171 /* JSONParser.swift */; };
 		C154F7CE1CC7F3B700A8A171 /* GnrAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7CD1CC7F3B700A8A171 /* GnrAPIService.swift */; };
+		C1764A4D1CEDCB9A00E9E7C4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1764A4C1CEDCB9A00E9E7C4 /* WebViewController.swift */; };
 		C188AB701CD7616A00A8A8AE /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188AB6F1CD7616A00A8A8AE /* DetailTableViewController.swift */; };
 		C188AB721CD7617C00A8A8AE /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188AB711CD7617C00A8A8AE /* DetailTableViewCell.swift */; };
 		C188E7A71CCA3AB200644F01 /* Psp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188E7A51CCA3AB200644F01 /* Psp.swift */; };
@@ -54,6 +55,7 @@
 		C154F7C71CC7C48300A8A171 /* ServicesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ServicesTableViewCell.xib; path = ../ServicesTableViewCell.xib; sourceTree = "<group>"; };
 		C154F7CA1CC7D37000A8A171 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		C154F7CD1CC7F3B700A8A171 /* GnrAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnrAPIService.swift; sourceTree = "<group>"; };
+		C1764A4C1CEDCB9A00E9E7C4 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C188AB6F1CD7616A00A8A8AE /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		C188AB711CD7617C00A8A8AE /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		C188E7A51CCA3AB200644F01 /* Psp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Psp.swift; path = ../Psp.swift; sourceTree = "<group>"; };
@@ -96,7 +98,9 @@
 		C13DCDAD1CC9239100AA9098 /* Main ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C1FA47C81CC664B400458920 /* MaiServices */,
 				C13DCDAE1CC923AF00AA9098 /* Segurança */,
+				C1764A4C1CEDCB9A00E9E7C4 /* WebViewController.swift */,
 			);
 			name = "Main ViewControllers";
 			sourceTree = "<group>";
@@ -104,6 +108,7 @@
 		C13DCDAE1CC923AF00AA9098 /* Segurança */ = {
 			isa = PBXGroup;
 			children = (
+				C144871B1CEA41B200077835 /* Cells */,
 				C1EF47BF1CD3757600EBF5E5 /* Utils.swift */,
 				C13DCDB31CC924BA00AA9098 /* SecurityBaseController.swift */,
 				C188E7AE1CCA3F3400644F01 /* MapViewController.swift */,
@@ -165,7 +170,6 @@
 				C18A82481CBC255500FB3087 /* Assets.xcassets */,
 				C18A824A1CBC255500FB3087 /* LaunchScreen.storyboard */,
 				C18A824D1CBC255500FB3087 /* Info.plist */,
-				C1FA47C81CC664B400458920 /* MaiServices */,
 				C18A82451CBC255500FB3087 /* maiMobile_iOS.xcdatamodeld */,
 			);
 			path = "maiMobile-iOS";
@@ -300,6 +304,7 @@
 				C154F7C11CC6A46200A8A171 /* FeaturedTableViewController.swift in Sources */,
 				C188AB701CD7616A00A8A8AE /* DetailTableViewController.swift in Sources */,
 				C12CB0DC1CC541E600758F19 /* Service.swift in Sources */,
+				C1764A4D1CEDCB9A00E9E7C4 /* WebViewController.swift in Sources */,
 				C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */,
 				C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */,
 				C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */,
