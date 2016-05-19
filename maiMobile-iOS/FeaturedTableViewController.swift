@@ -42,6 +42,7 @@ class FeaturedTableViewController: ServiceController, NSFetchedResultsController
         let featuredService = featuredFetchResultController.objectAtIndexPath(indexPath) as! Service
         cell.titleLabel.text = featuredService.title
         cell.noteLabel.text = featuredService.note
+        cell.imageview.image = UIImage(data: NSData(contentsOfURL: featuredService.imageUrl)!)
         return cell
     }
     
