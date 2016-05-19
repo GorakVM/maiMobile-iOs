@@ -14,34 +14,38 @@ class ServiceBuilder {
     
     func servicesFromArray(object: AnyObject, inContext context: NSManagedObjectContext) {
         
-        let servicesArray = object as! [[String : AnyObject]]
+        let servicesArray = object as! [[String : String]]
         var xmlService = [String : AnyObject]()
         for values in servicesArray {
             
-            if let description = values["Description"] as? String {
+            if let description = values["Description"] {
                 xmlService["Description"] = description
             }
             
-            if let title = values["Title"] as? String {
+            if let title = values["Title"] {
                 xmlService["Title"] = title
             }
             
-            if let highlight = values["Highlight"] as? String {
+            if let highlight = values["Highlight"] {
                 xmlService["Highlight"] = highlight
             }
             
-            if let position = values["Position"] as? String {
+            if let position = values["Position"] {
                 xmlService["Position"] = position
             }
             
-            if let serviceId = values["ServiceID"] as? String {
+            if let serviceId = values["ServiceID"] {
                 xmlService["ServiceID"] = serviceId
             }
             
-            if let urlString = values["Url"] as? String {
+            if let urlString = values["Url"] {
                 if !urlString.isEmpty {
                     xmlService["Url"] = urlString
                 }
+            }
+            
+            if let imageUrl = values["Image"] {
+                xmlService["ImageUrl"] = imageUrl
             }
             
             if let service = values["Service"] {
@@ -75,6 +79,7 @@ class ServiceBuilder {
         service.position = Int(xmlService["Position"] as! String)!
         service.note = (xmlService["Description"] as! String)
         service.title = (xmlService["Title"] as! String)
+        service.imageUrl = NSURL(string: xmlService["ImageUrl"] as! String)!
         if let urlString = xmlService["Url"] as? String {
             service.url = NSURL(string: urlString)!
         }
