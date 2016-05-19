@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FeaturedTableViewController: ServiceController,NSFetchedResultsControllerDelegate {
+class FeaturedTableViewController: ServiceController, NSFetchedResultsControllerDelegate {
     
     var featuredFetchResultController: NSFetchedResultsController!
     
@@ -27,6 +27,8 @@ class FeaturedTableViewController: ServiceController,NSFetchedResultsControllerD
         try! featuredFetchResultController.performFetch()
     }
     
+    
+    //MARK: - UITableViewDataSource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -43,6 +45,17 @@ class FeaturedTableViewController: ServiceController,NSFetchedResultsControllerD
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let featuredService = featuredFetchResultController.objectAtIndexPath(indexPath) as! Service
+        guard featuredService.position != 1 else {
+            return
+        }
+        let webViewController = storyboard?.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
+        webViewController.url = featuredService.url
+        navigationController?.pushViewController(webViewController, animated: true)
+    }
+    
+    //Mark: - NSFetchedResultsControllerDelegate
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
     }

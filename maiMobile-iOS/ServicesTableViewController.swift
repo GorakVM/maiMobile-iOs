@@ -27,6 +27,8 @@ class ServicesTableViewController: ServiceController, NSFetchedResultsController
         try! serviceFetchResultController.performFetch()
     }
     
+    //MARK: - UITableViewDataSource
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -43,8 +45,19 @@ class ServicesTableViewController: ServiceController, NSFetchedResultsController
         return cell
     }
     
+    //MARK: - NSFetchResultController
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
+    }
+    //MARK: - UITableViewDelegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let service = serviceFetchResultController.objectAtIndexPath(indexPath) as! Service
+        guard service.position != 1 else {
+            return
+        }
+        let webViewController = storyboard?.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
+        webViewController.url = service.url
+        navigationController?.pushViewController(webViewController, animated: true)
     }
     
 }
