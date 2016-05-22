@@ -83,6 +83,24 @@
             </objects>
             <point key="canvasLocation" x="2405" y="1101"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Wl3-V4-NwA">
+            <objects>
+                <viewController id="xmK-Zl-A3r" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="94d-g4-Ued"/>
+                        <viewControllerLayoutGuide type="bottom" id="xkV-Km-22B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IDf-L6-6cx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b9T-n7-Tdv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3213" y="408"/>
+        </scene>
         <!--Web View Controller-->
         <scene sceneID="xfa-An-9NZ">
             <objects>
@@ -99,22 +117,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="StB-9k-rqN">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" red="0.11764705882352941" green="0.18823529411764706" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="28P-Gu-j6B" firstAttribute="top" secondItem="1d3-C3-VGf" secondAttribute="topMargin" id="1Od-dW-GcY"/>
+                            <constraint firstItem="StB-9k-rqN" firstAttribute="centerX" secondItem="1d3-C3-VGf" secondAttribute="centerX" id="CZE-8a-k2f"/>
                             <constraint firstItem="28P-Gu-j6B" firstAttribute="leading" secondItem="1d3-C3-VGf" secondAttribute="leadingMargin" constant="-20" id="Ei0-JY-dqg"/>
+                            <constraint firstItem="StB-9k-rqN" firstAttribute="centerY" secondItem="1d3-C3-VGf" secondAttribute="centerY" id="Jfn-te-WZn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="28P-Gu-j6B" secondAttribute="trailing" constant="-20" id="woy-ne-0ZR"/>
                             <constraint firstItem="Z5c-Rs-KV7" firstAttribute="top" secondItem="28P-Gu-j6B" secondAttribute="bottom" id="zfi-Ys-4U2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="StB-9k-rqN" id="YAh-QL-WJD"/>
                         <outlet property="webView" destination="28P-Gu-j6B" id="Gx5-Dt-Fij"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYI-ae-JXk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3131" y="772"/>
+            <point key="canvasLocation" x="3195" y="1074"/>
         </scene>
         <!--Security Base Controller-->
         <scene sceneID="d8S-Ns-XJt">
@@ -191,7 +216,7 @@
         <scene sceneID="Dyb-q2-O3x">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Id-id-ZFD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Serviços" id="YzX-Td-pLq"/>
+                    <tabBarItem key="tabBarItem" title="Serviços" image="menu_bar_services_inactive" selectedImage="menu_bar_services_active" id="YzX-Td-pLq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3b7-r0-ly4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -210,7 +235,7 @@
         <scene sceneID="czy-CY-zAk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j9J-4H-Fzf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Destaques" id="wWw-m9-Wqz"/>
+                    <tabBarItem key="tabBarItem" title="Destaques" image="menu_bar_destaque_inactive" selectedImage="menu_bar_destaque_active" id="wWw-m9-Wqz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="v3p-Sc-FRD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -229,7 +254,7 @@
         <scene sceneID="6kF-3g-7ul">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RW1-Cl-mLs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Segurança" id="hAr-Bk-cQh"/>
+                    <tabBarItem key="tabBarItem" title="Segurança" image="menu_bar_seguranca_inactive" selectedImage="menu_bar_seguranca_active" id="hAr-Bk-cQh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qxd-gt-VXv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -381,4 +406,12 @@
             <point key="canvasLocation" x="4053" y="-302"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu_bar_destaque_active" width="24" height="24"/>
+        <image name="menu_bar_destaque_inactive" width="24" height="24"/>
+        <image name="menu_bar_seguranca_active" width="24" height="24"/>
+        <image name="menu_bar_seguranca_inactive" width="24" height="24"/>
+        <image name="menu_bar_services_active" width="24" height="24"/>
+        <image name="menu_bar_services_inactive" width="24" height="24"/>
+    </resources>
 </document>
