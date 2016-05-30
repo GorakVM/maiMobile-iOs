@@ -19,7 +19,7 @@ class PspApiService {
         return request
     }
     
-    func getDictionaryFromData(completion: (AnyObject) -> Void) {
+    func getDictionaryFromData(completion: ([AnyObject]) -> Void) {
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request()) { (data, response, error) in
             guard let httpResponse = response as? NSHTTPURLResponse, jsonData = data else {
                 print("PspApiService response: \(response) error: \(error)")
