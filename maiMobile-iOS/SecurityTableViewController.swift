@@ -10,25 +10,32 @@ import UIKit
 import CoreLocation
 import CoreData
 
-class SecurityTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class SecurityTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, CLLocationManagerDelegate {
     
     var forcesFetchResultController: NSFetchedResultsController!
     var gnrFetchResultController: NSFetchedResultsController!
     var pspFetchResultController: NSFetchedResultsController!
     
-    private var pspList = [Psp]()
-    private var gnrList = [Gnr]()
-    private var forces = [Force]()
+    enum Entity: String {
+        case Force = "Force"
+        case Gnr = "Gnr"
+        case Psp = "Psp"
+    }
+    
+    enum CellIdentifier: String {
+        case Gnr = "gnrCell"
+        case Psp = "pspCell"
+    }
     
     var count = 0
     
-    var selectedForceType = Force.ForceType.All.rawValue
+    var selectedForceType = Force.ForceType.All
     let isLocationServicesEnabled = CLLocationManager.locationServicesEnabled()
     
     let fetcher = Fetcher()
     
     @IBOutlet weak var securityTableView: UITableView!
-
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBAction func barButtonItem(sender: UISegmentedControl) {
         setSelectedForceType()
@@ -36,67 +43,54 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
     
     let locationManager = CLLocationManager()
     
+    let forceFetchRequest = NSFetchRequest(entityName: Entity.Force.rawValue)
+    let gnrFetchRequest = NSFetchRequest(entityName: Entity.Gnr.rawValue)
+    let pspFetchRequest = NSFetchRequest(entityName: Entity.Psp.rawValue)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.bananaColor()
-        segmentedControl.tintColor = UIColor.whiteColor()
+        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        securityTableView.rowHeight = CGFloat(80)
+        securityTableView.registerNib(UINib(nibName: "GnrTableViewCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.Gnr.rawValue)
+        securityTableView.registerNib(UINib(nibName: "PspTableViewCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.Psp.rawValue)
         
-        let forceFetchRequest = NSFetchRequest(entityName: "Force")
-        let gnrFetchRequest = NSFetchRequest(entityName: "Gnr")
-        let pspFetchRequest = NSFetchRequest(entityName: "Psp")
-        let orderByName = [NSSortDescriptor(key: "name", ascending: true)]
-        forceFetchRequest.sortDescriptors = orderByName
-        gnrFetchRequest.sortDescriptors = orderByName
-        pspFetchRequest.sortDescriptors = orderByName
+        segmentedControl.tintColor = UIColor.whiteColor()
         
         let mainContext = fetcher.sharedMainContext
+        
+        // SortDescriptors
+        let orderByNameDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        
+        let fetchBatchSizeLimit = 12
+        forceFetchRequest.fetchBatchSize = fetchBatchSizeLimit
+        gnrFetchRequest.fetchBatchSize = fetchBatchSizeLimit
+        pspFetchRequest.fetchBatchSize = fetchBatchSizeLimit
+        
+        forceFetchRequest.sortDescriptors = [orderByNameDescriptor]
+        gnrFetchRequest.sortDescriptors = [orderByNameDescriptor]
+        pspFetchRequest.sortDescriptors = [orderByNameDescriptor]
+        
+        //Initializations
         forcesFetchResultController = NSFetchedResultsController(fetchRequest: forceFetchRequest, managedObjectContext: mainContext, sectionNameKeyPath: nil, cacheName: nil)
-        try! forcesFetchResultController.performFetch()
-        
         gnrFetchResultController = NSFetchedResultsController(fetchRequest: gnrFetchRequest, managedObjectContext: mainContext, sectionNameKeyPath: nil, cacheName: nil)
-        try! gnrFetchResultController.performFetch()
-        
         pspFetchResultController = NSFetchedResultsController(fetchRequest: pspFetchRequest, managedObjectContext: mainContext, sectionNameKeyPath: nil, cacheName: nil)
-        try! pspFetchResultController.performFetch()
         
-        forces = forcesFetchResultController.fetchedObjects as! [Force]
-        gnrList = gnrFetchResultController.fetchedObjects as! [Gnr]
-        pspList = pspFetchResultController.fetchedObjects as! [Psp]
+        //Delegates
+        forcesFetchResultController.delegate = self
+        gnrFetchResultController.delegate = self
+        pspFetchResultController.delegate = self
         
-        if isLocationServicesEnabled {
-            locationManager.startUpdatingLocation()
-            
-            for value in forces {
-                let forceLocation = CLLocation(latitude: value.latitude, longitude: value.longitude)
-                value.distance = distanceBetweenLocations(forceLocation)
-            }
-            
-            for gnr in gnrList {
-                let gnrLocation = CLLocation(latitude: gnr.latitude, longitude: gnr.longitude)
-                gnr.distance = distanceBetweenLocations(gnrLocation)
-            }
-            
-            for psp in pspList {
-                let psplocation = CLLocation(latitude: psp.latitude, longitude: psp.longitude)
-                psp.distance = distanceBetweenLocations(psplocation)
-            }
-            
-            if isLocationServicesEnabled {
-                forces.sortInPlace({ $0.0.distance < $0.1.distance })
-                gnrList.sortInPlace({ $0.0.distance < $0.1.distance })
-                pspList.sortInPlace({ $0.0.distance < $0.1.distance })
-            }
-        }
+        if let userLocation = locationManager.location {
+            setDistanceToManagedObjects(userLocation)
+        } else {
+            try! forcesFetchResultController.performFetch()
+            try! gnrFetchResultController.performFetch()
+            try! pspFetchResultController.performFetch()
+        } 
         
         setSelectedForceType()
     }// End viewDidLoad
-    
-    func distanceBetweenLocations(location: CLLocation) -> Double {
-        let userLocation = locationManager.location!
-        let distanceBetweenLocations = userLocation.distanceFromLocation(location)
-        return Double(distanceBetweenLocations)
-    }
     
     // MARK: - Table view data source
     
@@ -109,53 +103,78 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        let (name, distance) = getDisplayableInformation(indexPath)
-        cell.textLabel?.text = name
-        cell.detailTextLabel?.text = distance
+        let cell: UITableViewCell! = nil
+        switch selectedForceType {
+        case .All:
+            let force = forcesFetchResultController.objectAtIndexPath(indexPath) as! Force
+            if force.forceType == "gnr" {
+                return getCellForGnrTypeAtIndexPathWithForceObject(tableView, indexPath: indexPath, force: force)
+            } else if force.forceType == "psp" {
+                return getCellForPspTypeAtIndexPathWithForceObject(tableView, indexPath: indexPath, force: force)
+            }
+        case .Gnr:
+            return getCellForGnrTypeAtIndexPathWithForceObject(tableView, indexPath: indexPath, force: gnrFetchResultController.objectAtIndexPath(indexPath) as! Gnr)
+            
+        case .Psp:
+            return getCellForPspTypeAtIndexPathWithForceObject(tableView, indexPath: indexPath, force: pspFetchResultController.objectAtIndexPath(indexPath) as! Psp)
+        }
         return cell
     }
     
-    private func getDisplayableInformation(indexPath: NSIndexPath) -> (String, String) {
-        var distance = ""
-        var force: Force!
-        var roundedNumber: Double = 0
-        
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailTableviewController = storyboard?.instantiateViewControllerWithIdentifier("DetailTableViewController") as! DetailTableViewController
+        let selectedForce = forcesFetchResultController.objectAtIndexPath(indexPath)
         switch selectedForceType {
-        case Force.ForceType.All.rawValue:
-            force = forces[indexPath.row]
-        case Force.ForceType.Gnr.rawValue:
-            force = gnrList[indexPath.row]
-        case Force.ForceType.Psp.rawValue:
-            force = pspList[indexPath.row]
-        default:
-            break
-        }
-        
-        if isLocationServicesEnabled {
-            if force.distance < 1000 {
-                roundedNumber = Double(round(force.distance))
-                distance = String(Int(round(roundedNumber))) + " m"
-            } else if force.distance >= 1000 {
-                roundedNumber = Double(round(force.distance)/1000)
-                distance = String(Int(round(roundedNumber))) + " km"
-            } else {
-                distance = ""
+        case .All:
+            if selectedForce is Psp {
+                detailTableviewController.force = forcesFetchResultController.objectAtIndexPath(indexPath) as! Force
+                detailTableviewController.title = "Psp"
+            } else if selectedForce is Gnr{
+                detailTableviewController.force = forcesFetchResultController.objectAtIndexPath(indexPath) as! Force
+                detailTableviewController.title = "Gnr"
             }
+        case .Gnr:
+            detailTableviewController.force = gnrFetchResultController.objectAtIndexPath(indexPath) as! Force
+            detailTableviewController.title = "Gnr"
+        case .Psp:
+            detailTableviewController.force = pspFetchResultController.objectAtIndexPath(indexPath) as! Force
+            detailTableviewController.title = "Psp"
         }
-        return (force.name, distance)
+        navigationController?.pushViewController(detailTableviewController, animated: true)
+        
+    }
+    
+    func getCellForGnrTypeAtIndexPathWithForceObject(tableView: UITableView, indexPath: NSIndexPath, force: Force) -> GnrTableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.Gnr.rawValue) as! GnrTableViewCell
+        let gnr = force as! Gnr
+        cell.imageView?.image = nil
+        cell.imageView?.image = UIImage(named: "gnr")
+        cell.textLabel?.text = gnr.name
+        cell.detailTextLabel?.text = String(gnr.distance)
+        return cell
+    }
+    
+    func getCellForPspTypeAtIndexPathWithForceObject(tableView: UITableView, indexPath: NSIndexPath, force: Force) -> PspTableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.Psp.rawValue) as! PspTableViewCell
+        let psp = force as! Psp
+        cell.imageView?.image = nil
+        cell.imageView?.image = UIImage(named: "psp")
+        cell.titleLabel.text = psp.name
+        cell.subtitleLabel.text = psp.desc
+        cell.rightDetailLabel.text = String(psp.distance)
+        return cell
     }
     
     func setSelectedForceType() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            selectedForceType = Force.ForceType.All.rawValue
+            selectedForceType = Force.ForceType.All
             count = forcesFetchResultController.fetchedObjects?.count ?? 0
         case 1:
-            selectedForceType = Force.ForceType.Gnr.rawValue
+            selectedForceType = Force.ForceType.Gnr
             count = gnrFetchResultController.fetchedObjects?.count ?? 0
         case 2:
-            selectedForceType = Force.ForceType.Psp.rawValue
+            selectedForceType = Force.ForceType.Psp
             count = pspFetchResultController.fetchedObjects?.count ?? 0
         default:
             break
@@ -164,27 +183,59 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
         securityTableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let detailTableviewController = storyboard?.instantiateViewControllerWithIdentifier("DetailTableViewController") as! DetailTableViewController
-        switch selectedForceType {
-        case Force.ForceType.All.rawValue:
-            if forces[indexPath.row] is Psp {
-                detailTableviewController.psp = forces[indexPath.row] as! Psp
-            }
-            navigationController?.pushViewController(detailTableviewController, animated: true)
-        case Force.ForceType.Gnr.rawValue:
-            break
-        case Force.ForceType.Psp.rawValue:
-            detailTableviewController.psp = pspList[indexPath.row]
-            navigationController?.pushViewController(detailTableviewController, animated: true)
-        default:
-            break
-        }
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
         
+        if let userLocation = locationManager.location {
+            setDistanceToManagedObjects(userLocation)
+        } else {
+            let orderByNameDescriptor = NSSortDescriptor(key: "name", ascending: true)
+            forceFetchRequest.sortDescriptors = [orderByNameDescriptor]
+            gnrFetchRequest.sortDescriptors = [orderByNameDescriptor]
+            pspFetchRequest.sortDescriptors = [orderByNameDescriptor]
+            try! forcesFetchResultController.performFetch()
+            try! gnrFetchResultController.performFetch()
+            try! pspFetchResultController.performFetch()
+            setSelectedForceType()
+        }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let latestUserLocation = locations.last!
+        setDistanceToManagedObjects(latestUserLocation)
+    }
+    
+    func setDistanceToManagedObjects(userLocation: CLLocation) {
+        let privateContext = fetcher.sharedPrivateContext
+        let request = NSFetchRequest(entityName: "Force")
+        let arrayForceObjects = try! privateContext.executeFetchRequest(request)
+        
+        privateContext.performBlock {
+            for forceObject in arrayForceObjects {
+                let force = forceObject as! Force
+                let forceObjectLocation = CLLocation(latitude: force.latitude, longitude: force.longitude)
+                let distanceBetweenLocations = userLocation.distanceFromLocation(forceObjectLocation)
+                forceObject.setValue(Double(distanceBetweenLocations), forKey: "distance")
+            }
+            do {
+                try privateContext.save()
+            } catch {
+                print("error saving context: \(error)")
+            }
+            
+        }
+        
+        let orderByDistanceDescriptor = NSSortDescriptor(key: "distance", ascending: true)
+        forceFetchRequest.sortDescriptors = [orderByDistanceDescriptor]
+        gnrFetchRequest.sortDescriptors = [orderByDistanceDescriptor]
+        pspFetchRequest.sortDescriptors = [orderByDistanceDescriptor]
+        
+        try! forcesFetchResultController.performFetch()
+        try! gnrFetchResultController.performFetch()
+        try! pspFetchResultController.performFetch()
+        
+        setSelectedForceType()
         securityTableView.reloadData()
+        
     }
     
 }
