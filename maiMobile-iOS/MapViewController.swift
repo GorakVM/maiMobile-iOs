@@ -26,12 +26,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     let locationManager = CLLocationManager()
-    
+    let isLocationServicesEnabled = CLLocationManager.locationServicesEnabled()
     var forceAnnotation = [CustomPointAnnotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.requestWhenInUseAuthorization()
+        //        locationManager.requestWhenInUseAuthorization()
+        //        locationManager.delegate = self
         
         let fetchAllForces = NSFetchRequest(entityName: "Force")
         fetchAllForces.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
@@ -43,20 +44,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.delegate = self
         mapView.showsUserLocation = true
         
-        if CLLocationManager.locationServicesEnabled() {
+        if isLocationServicesEnabled {
             if let userLocation = mapView.userLocation.location {
                 setZoomToRegion(userLocation)
             }
         }
+        
+        //MARK: - To be deleted, used only for the meeting
+        
+        let lisbonCoordinates = CLLocation(latitude: 38.71389, longitude: -9.13944)
+        setZoomToRegion(lisbonCoordinates)
+        
+        //MARK: - End
+        
         setAnnotationsForVisibleRectInMap()
     }// end viewdidload
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        //This method is called whenever the user changes the status of the location service of his device
+        
+        //the purpose of this code is, in the case that the user didn't have the location services On at the time
+        //that the view was created, the request to enable the location services allowing the app to access the user's location is going to be made here
+        if isLocationServicesEnabled == false {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
     
     func mapViewDidFinishLoadingMap(mapView: MKMapView) {
         setAnnotationsForVisibleRectInMap()
     }
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-        print("userLocation: \(userLocation)")
         setZoomToRegion(userLocation.location!)
         setAnnotationsForVisibleRectInMap()
     }
@@ -69,7 +87,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             mapView.setRegion(region, animated: true)
             mapDidZoomToRegion = true
         }
-        setAnnotationsForVisibleRectInMap()
+        
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -91,7 +109,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let rightButton = UIButton(type: .DetailDisclosure)
         reusableAnnotationView?.rightCalloutAccessoryView = rightButton
-        
+        // this verification is because the user's location is an annotation too and we don't want to customize its annotation
         if !(annotation is MKUserLocation) {
             let customPointAnnotation = annotation as! CustomPointAnnotation
             reusableAnnotationView?.image = customPointAnnotation.image
@@ -105,17 +123,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             if let annotation = view.annotation as? CustomPointAnnotation {
-                guard annotation.force.forceType != Force.ForceType.Gnr.rawValue else {
-                    let coordinates = CLLocationCoordinate2D(latitude: annotation.force.latitude, longitude: annotation.force.longitude)
-                    let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-                    let mapItem = MKMapItem(placemark: placemark)
-                    mapItem.name = annotation.title!
-                    let regionTeste = MKCoordinateRegionMakeWithDistance(placemark.coordinate, 10000, 10000)
-                    mapItem.openInMapsWithLaunchOptions([MKLaunchOptionsMapCenterKey : NSValue(MKCoordinate: regionTeste.center),MKLaunchOptionsMapSpanKey : NSValue(MKCoordinateSpan: regionTeste.span)])
-                    return
-                }
                 let detailTableViewController = storyboard?.instantiateViewControllerWithIdentifier("DetailTableViewController") as! DetailTableViewController
-                detailTableViewController.psp = annotation.force as! Psp
+                detailTableViewController.force = annotation.force
                 navigationController?.pushViewController(detailTableViewController, animated: true)
             }
         }
@@ -142,10 +151,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             annotation.title = force.name
             switch force.forceType {
             case Force.ForceType.Gnr.rawValue:
-                annotation.image = UIImage.setImageToAnnotation((force as! Gnr).type)
+                annotation.image = UIImage(named: "gnr")
             case Force.ForceType.Psp.rawValue:
                 let psp = (force as! Psp)
-                annotation.subtitle = psp.desc!
+                annotation.subtitle = psp.desc
                 annotation.image = UIImage(named: "psp")
             default:
                 break
