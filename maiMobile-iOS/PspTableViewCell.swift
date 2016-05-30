@@ -10,6 +10,7 @@ import UIKit
 
 class PspTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var rightDetailLabel: UILabel!

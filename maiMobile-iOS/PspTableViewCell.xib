@@ -49,17 +49,8 @@
                         <color key="textColor" red="0.1647058824" green="0.20784313730000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gnrBlack" translatesAutoresizingMaskIntoConstraints="NO" id="lbo-hS-PQc">
-                        <rect key="frame" x="8" y="18" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="Ifz-Eq-e6G"/>
-                            <constraint firstAttribute="width" constant="40" id="amD-MI-y2e"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="lbo-hS-PQc" firstAttribute="centerY" secondItem="fZq-B5-CJK" secondAttribute="centerY" id="33b-lg-9jf"/>
-                    <constraint firstItem="lbo-hS-PQc" firstAttribute="leading" secondItem="fZq-B5-CJK" secondAttribute="leading" constant="8" id="5hQ-6c-iKO"/>
                     <constraint firstItem="9C8-Ib-m2C" firstAttribute="leading" secondItem="fZq-B5-CJK" secondAttribute="leadingMargin" constant="48" id="D1P-BX-ssU"/>
                     <constraint firstItem="erg-S3-5lo" firstAttribute="leading" secondItem="9C8-Ib-m2C" secondAttribute="trailing" constant="8" symbolic="YES" id="HAO-AG-cH1"/>
                     <constraint firstAttribute="bottomMargin" secondItem="MeM-c0-AVv" secondAttribute="bottom" id="Q71-3Y-N8Y"/>
@@ -80,7 +71,4 @@
             <point key="canvasLocation" x="337" y="322"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="gnrBlack" width="42" height="42"/>
-    </resources>
 </document>
