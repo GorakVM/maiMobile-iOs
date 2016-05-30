@@ -16,6 +16,7 @@ class ServicesTableViewController: ServiceController, NSFetchedResultsController
     let fetcher = Fetcher()
     
     override func viewDidLoad() {
+        
         tableView.rowHeight = 103
         tableView.registerNib(UINib(nibName: "ServicesTableViewCell", bundle: nil), forCellReuseIdentifier: "serviceCell")
         
@@ -50,12 +51,10 @@ class ServicesTableViewController: ServiceController, NSFetchedResultsController
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
     }
+    
     //MARK: - UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let service = serviceFetchResultController.objectAtIndexPath(indexPath) as! Service
-        guard service.position != 1 else {
-            return
-        }
         let webViewController = storyboard?.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
         webViewController.url = service.url
         navigationController?.pushViewController(webViewController, animated: true)
