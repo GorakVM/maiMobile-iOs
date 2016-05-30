@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barTintColor = UIColor.bananaColor()
         UINavigationBar.appearance().tintColor = UIColor.blueWhaleColor()
-        let tabarController = window?.rootViewController as! UITabBarController
+        
         
         UITabBar.appearance().tintColor = UIColor.blueWhaleColor()
         Fetcher().loadServicesToCoreData()
