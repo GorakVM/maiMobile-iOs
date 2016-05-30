@@ -17,6 +17,12 @@ class Fetcher {
         return mainContext
     }()
     
+    let sharedPrivateContext: NSManagedObjectContext = {
+        let privateContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        privateContext.persistentStoreCoordinator = CoreDataStack.sharedPersistentCoordinator()
+        return privateContext
+    }()
+    
     init() {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -30,27 +36,24 @@ class Fetcher {
         sharedMainContext.mergeChangesFromContextDidSaveNotification(notification)
     }
     
-    func privateManagedObjectContext() -> NSManagedObjectContext {
+    class func privateManagedObjectContext() -> NSManagedObjectContext {
         let privateManagedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
         privateManagedObjectContext.persistentStoreCoordinator = CoreDataStack.sharedPersistentCoordinator()
         return privateManagedObjectContext
-    }
+    } 
     
     func loadServicesToCoreData() {
-        let privateContext = privateManagedObjectContext()
+        let privateContext = Fetcher.privateManagedObjectContext()
         MaiAPI().getServices { (servicesArray) in
-            privateContext.performBlock({
                 ServiceBuilder().servicesFromArray(servicesArray, inContext: privateContext)
                 privateContext.performBlock({
                     self.saveContext(privateContext)
-                })
             })
         }
-        
     }
     
     func loadGnrToCoreData() {
-        let privateContext = privateManagedObjectContext()
+        let privateContext = Fetcher.privateManagedObjectContext()
         MaiAPI().getGnr { (gnrArray) in
             GnrBuilder().gnrFromArray(gnrArray, inContext: privateContext)
             privateContext.performBlock({
@@ -60,7 +63,7 @@ class Fetcher {
     }
     
     func loadPspToCoreData() {
-        let privateContext = privateManagedObjectContext()
+        let privateContext = Fetcher.privateManagedObjectContext()
         MaiAPI().getPsp { (pspArray) in
             PspBuilder().pspFromArray(pspArray, inContext: privateContext)
             privateContext.performBlock({
