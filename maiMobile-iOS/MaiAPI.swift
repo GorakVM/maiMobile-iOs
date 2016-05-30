@@ -10,7 +10,7 @@ import Foundation
 
 class MaiAPI {
     
-    func getServices(result: AnyObject -> Void) {
+    func getServices(result: [AnyObject] -> Void) {
         ServicesAPIService().getDictionaryFromData { (objects) in
             result(objects)
         }
