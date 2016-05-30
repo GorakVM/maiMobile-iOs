@@ -23,6 +23,7 @@
 		C1729E201CEB381800F0681C /* GnrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1729E1F1CEB381800F0681C /* GnrTableViewCell.swift */; };
 		C1729E221CEB38E600F0681C /* PspTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1729E211CEB38E600F0681C /* PspTableViewCell.swift */; };
 		C1764A4D1CEDCB9A00E9E7C4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1764A4C1CEDCB9A00E9E7C4 /* WebViewController.swift */; };
+		C1764A4F1CEDDE4300E9E7C4 /* TowTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1764A4E1CEDDE4300E9E7C4 /* TowTruckViewController.swift */; };
 		C17C459F1CEB2711007B3822 /* GnrTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17C459E1CEB2711007B3822 /* GnrTableViewCell.xib */; };
 		C17C45A11CEB271E007B3822 /* PspTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17C45A01CEB271E007B3822 /* PspTableViewCell.xib */; };
 		C18484DE1CFCAD9700CB0BA3 /* maiMobile_iOS.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C18484DD1CFCAD9700CB0BA3 /* maiMobile_iOS.xcdatamodel */; };
@@ -66,6 +67,7 @@
 		C1729E1F1CEB381800F0681C /* GnrTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnrTableViewCell.swift; sourceTree = "<group>"; };
 		C1729E211CEB38E600F0681C /* PspTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PspTableViewCell.swift; sourceTree = "<group>"; };
 		C1764A4C1CEDCB9A00E9E7C4 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		C1764A4E1CEDDE4300E9E7C4 /* TowTruckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TowTruckViewController.swift; sourceTree = "<group>"; };
 		C17C459E1CEB2711007B3822 /* GnrTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GnrTableViewCell.xib; sourceTree = "<group>"; };
 		C17C45A01CEB271E007B3822 /* PspTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PspTableViewCell.xib; sourceTree = "<group>"; };
 		C17E7BC61CF2079A00291E7F /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				C1FA47C81CC664B400458920 /* MaiServices */,
 				C13DCDAE1CC923AF00AA9098 /* Segurança */,
 				C1764A4C1CEDCB9A00E9E7C4 /* WebViewController.swift */,
+				C1764A4E1CEDDE4300E9E7C4 /* TowTruckViewController.swift */,
 			);
 			name = "Main ViewControllers";
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */,
 				C18484DE1CFCAD9700CB0BA3 /* maiMobile_iOS.xcdatamodel in Sources */,
 				C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */,
+				C1764A4F1CEDDE4300E9E7C4 /* TowTruckViewController.swift in Sources */,
 				C188AB721CD7617C00A8A8AE /* DetailTableViewCell.swift in Sources */,
 				C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */,
 				C13DCDB41CC924BA00AA9098 /* SecurityBaseController.swift in Sources */,
