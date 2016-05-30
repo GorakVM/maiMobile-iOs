@@ -12,22 +12,25 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     var url = NSURL()
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.hidden = false
         webView.delegate = self
         let request = NSURLRequest(URL: url)
         webView.loadRequest(request)
-        // Do any additional setup after loading the view.
+        
     }
     
     func webViewDidStartLoad(webView: UIWebView) {
-        print("webViewDidStartLoad")
+        activityIndicator.startAnimating()
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        print("webViewDidFinishLoad")
+        activityIndicator.stopAnimating()
+        activityIndicator.hidden = true
     }
-    
     
 }
