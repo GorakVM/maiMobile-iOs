@@ -48,14 +48,18 @@ class FeaturedTableViewController: ServiceController, NSFetchedResultsController
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let featuredService = featuredFetchResultController.objectAtIndexPath(indexPath) as! Service
-        guard featuredService.position != 1 else {
-            return
+        var nextViewController: UIViewController!
+        if featuredService.position == 1 {
+            let towTruckViewcontroller = storyboard?.instantiateViewControllerWithIdentifier("TowTruckViewController") as! TowTruckViewController
+            towTruckViewcontroller.title = "Programa SMS Reboques"
+            nextViewController = towTruckViewcontroller
+        } else {
+            let webViewController = storyboard?.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
+            webViewController.url = featuredService.url
+            nextViewController = webViewController
         }
-        let webViewController = storyboard?.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
-        webViewController.url = featuredService.url
-        navigationController?.pushViewController(webViewController, animated: true)
+        navigationController?.pushViewController(nextViewController, animated: true)
     }
-    
     //Mark: - NSFetchedResultsControllerDelegate
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
