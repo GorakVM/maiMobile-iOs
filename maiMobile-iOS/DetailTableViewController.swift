@@ -11,12 +11,13 @@ import MapKit
 
 class DetailTableViewController: UITableViewController {
     
-    var psp: Psp!
-    let titles = ["Endereço", "Telefone", "Website", "E-mail"]
+    var force: Force!
+    let titles = ["Descrição", "Endereço", "Telephone", "E-mail"]
+    let images = ["","directions","phone","mail"]
     
-    let addressIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-    let phoneIndexPath = NSIndexPath(forRow: 1, inSection: 0)
-    let websiteIndexPath = NSIndexPath(forRow: 2, inSection: 0)
+    let descriptionIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+    let addressIndexPath = NSIndexPath(forRow: 1, inSection: 0)
+    let phoneIndexPath = NSIndexPath(forRow: 2, inSection: 0)
     let emailIndexPath = NSIndexPath(forRow: 3, inSection: 0)
     
     // MARK: - Table view data source
@@ -31,43 +32,35 @@ class DetailTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! DetailTableViewCell
+        
+        var subtitle = ""
+        switch indexPath {
+        case descriptionIndexPath:
+            force.forceType == "psp" ? (subtitle = (force as! Psp).desc!) : (subtitle = "")
+        case addressIndexPath:
+            subtitle = force.address
+        case phoneIndexPath:
+            subtitle = force.phone
+        case emailIndexPath:
+            break
+        default: break
+        }
+        
         cell.titleLabel.text = titles[indexPath.row]
-        cell.subtitleLabel.text = getContentToDisplay(indexPath)
+        cell.subtitleLabel.text = subtitle
+        cell.detailImageView.image = UIImage(named: images[indexPath.row])
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath == addressIndexPath {
-            let coordinates = CLLocationCoordinate2D(latitude: psp.latitude, longitude: psp.longitude)
+            let coordinates = CLLocationCoordinate2D(latitude: force.latitude, longitude: force.longitude)
             let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
             let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = psp.name
+            mapItem.name = force.name
             let regionTeste = MKCoordinateRegionMakeWithDistance(placemark.coordinate, 10000, 10000)
             mapItem.openInMapsWithLaunchOptions([MKLaunchOptionsMapCenterKey : NSValue(MKCoordinate: regionTeste.center),MKLaunchOptionsMapSpanKey : NSValue(MKCoordinateSpan: regionTeste.span)])
         }
-    }
-    
-    func getContentToDisplay(indexPath: NSIndexPath) -> String {
-        switch indexPath {
-        case addressIndexPath:
-            if let address = psp.address {
-                return address
-            } else {
-                return ""
-            }
-        case phoneIndexPath:
-            if let phone = psp.phone {
-                return phone
-            }
-        case websiteIndexPath:
-            return " no website link from the webservices for now"
-        case emailIndexPath:
-            return " no website link from the webservices for now"
-        default:
-            break
-        }
-        
-        return ""
     }
     
 }
