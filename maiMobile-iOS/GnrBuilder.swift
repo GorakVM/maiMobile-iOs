@@ -11,52 +11,36 @@ import CoreData
 
 class GnrBuilder {
     
-    func gnrFromArray(object: AnyObject, inContext context: NSManagedObjectContext) {
+    func gnrFromArray(object: [AnyObject], inContext context: NSManagedObjectContext) {
         
-        let jsonArray = object as! [[String : AnyObject]]
-        for data in jsonArray {
-            let gnrDataList = data["features"] as! [[String : AnyObject]]
-            for values in gnrDataList {
-                var attributes = [String : AnyObject]()
-                var coordinates = [String : AnyObject]()
-                for value in values {
-                    if value.0 == "attributes" {
-                        attributes = value.1 as! [String : AnyObject]
-                    } else if value.0 == "geometry" {
-                        coordinates = value.1 as! [String : AnyObject]
-                    }
-                }
-                let dictionary = NSMutableDictionary(dictionary: attributes)
-                dictionary.addEntriesFromDictionary(coordinates)
-                
-                let request = NSFetchRequest(entityName: "Gnr")
-                let id = (attributes["OBJECTID"] as! Int)
-                request.predicate = NSPredicate(format: "remoteId == %d", id)
-                
-                let matches = try! context.executeFetchRequest(request)
-                
-                if matches.count > 1 {
-                    //handle error
-                } else if matches.count == 1 {
-                    setGNRManagedObject(matches.first as! Gnr, dictionary: dictionary)
-                } else  {
-                    let gnr = NSEntityDescription.insertNewObjectForEntityForName("Gnr", inManagedObjectContext: context) as! Gnr
-                    setGNRManagedObject(gnr, dictionary: dictionary)
-                }
-            }
+        for data in object {
+            let request = NSFetchRequest(entityName: "Gnr")
+            request.predicate = NSPredicate(format: "remoteId == %d", data["ObjectId"] as! Int)
             
+            let matches = try! context.executeFetchRequest(request)
+            
+            if matches.count > 1 {
+                //handle error
+            } else if matches.count == 1 {
+                setGNRManagedObject(matches.first as! Gnr, dictionary: data as! [String : AnyObject])
+            } else  {
+                let gnr = NSEntityDescription.insertNewObjectForEntityForName("Gnr", inManagedObjectContext: context) as! Gnr
+                setGNRManagedObject(gnr, dictionary: data as! [String : AnyObject])
+            }
         }
-        
         
     }
     
-    func setGNRManagedObject(gnrManagedObject: Gnr, dictionary: NSMutableDictionary) {
-        gnrManagedObject.remoteId = dictionary["OBJECTID"] as! Int
+    func setGNRManagedObject(gnrManagedObject: Gnr, dictionary: [String : AnyObject]) {
+        gnrManagedObject.remoteId = dictionary["ObjectId"] as! Int
+//        gnrManagedObject.email = dictionary["Email"] as! String
+        gnrManagedObject.latitude = dictionary["Lat"] as! Double
+        gnrManagedObject.longitude = dictionary["Long"] as! Double
+        gnrManagedObject.address = dictionary["Morada"] as! String
         gnrManagedObject.name = (dictionary["Nome"] as! String)
-        gnrManagedObject.type = dictionary["Hierarquia"] as! String
-        gnrManagedObject.longitude = dictionary["x"] as! Double
-        gnrManagedObject.latitude = dictionary["y"] as! Double
+        gnrManagedObject.phone = dictionary["Telefone"] as! String
         gnrManagedObject.forceType = Force.ForceType.Gnr.rawValue
+        
     }
     
 }

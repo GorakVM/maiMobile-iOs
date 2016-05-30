@@ -13,7 +13,7 @@ class JSONParser {
     init (data: NSData, handler: ([AnyObject]) -> Void) {
         var jsonData = [AnyObject]()
         do {
-            jsonData = try [NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)]
+            jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! [AnyObject]
         } catch {
             
         }

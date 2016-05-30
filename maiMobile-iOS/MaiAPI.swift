@@ -17,7 +17,7 @@ class MaiAPI {
         
     }
     
-    func getGnr(result: AnyObject -> Void) {
+    func getGnr(result: [AnyObject] -> Void) {
         GnrApiService().getDictionaryFromData { (objects) in
             result(objects)
             
