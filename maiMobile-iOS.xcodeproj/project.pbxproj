@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C105AC2C1CFF36D600284932 /* DirectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C105AC2B1CFF36D600284932 /* DirectionsTableViewCell.swift */; };
 		C122F6911CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C122F68F1CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld */; };
 		C12CB0DC1CC541E600758F19 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CB0DB1CC541E600758F19 /* Service.swift */; };
 		C13DCDAC1CC8DF0600AA9098 /* GnrBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C105AC2B1CFF36D600284932 /* DirectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableViewCell.swift; sourceTree = "<group>"; };
 		C122F6901CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = maiMobile_iOS.xcdatamodel; sourceTree = "<group>"; };
 		C12CB0DB1CC541E600758F19 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnrBuilder.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			children = (
 				C188AB6F1CD7616A00A8A8AE /* DetailTableViewController.swift */,
 				C188AB711CD7617C00A8A8AE /* DetailTableViewCell.swift */,
+				C105AC2B1CFF36D600284932 /* DirectionsTableViewCell.swift */,
 			);
 			name = DetailTableViewController;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				C12CB0DC1CC541E600758F19 /* Service.swift in Sources */,
 				C1764A4D1CEDCB9A00E9E7C4 /* WebViewController.swift in Sources */,
 				C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */,
+				C105AC2C1CFF36D600284932 /* DirectionsTableViewCell.swift in Sources */,
 				C1729E221CEB38E600F0681C /* PspTableViewCell.swift in Sources */,
 				C18484E61CFCADB400CB0BA3 /* Psp.swift in Sources */,
 				C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */,
