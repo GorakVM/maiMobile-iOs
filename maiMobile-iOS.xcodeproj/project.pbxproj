@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C122F6911CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C122F68F1CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld */; };
 		C12CB0DC1CC541E600758F19 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CB0DB1CC541E600758F19 /* Service.swift */; };
 		C13DCDAC1CC8DF0600AA9098 /* GnrBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */; };
 		C13DCDB01CC923CB00AA9098 /* SecurityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DCDAF1CC923CB00AA9098 /* SecurityTableViewController.swift */; };
@@ -26,7 +27,6 @@
 		C1764A4F1CEDDE4300E9E7C4 /* TowTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1764A4E1CEDDE4300E9E7C4 /* TowTruckViewController.swift */; };
 		C17C459F1CEB2711007B3822 /* GnrTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17C459E1CEB2711007B3822 /* GnrTableViewCell.xib */; };
 		C17C45A11CEB271E007B3822 /* PspTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17C45A01CEB271E007B3822 /* PspTableViewCell.xib */; };
-		C18484DE1CFCAD9700CB0BA3 /* maiMobile_iOS.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = C18484DD1CFCAD9700CB0BA3 /* maiMobile_iOS.xcdatamodel */; };
 		C18484E61CFCADB400CB0BA3 /* Psp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18484E01CFCADB400CB0BA3 /* Psp.swift */; };
 		C18484E81CFCADB400CB0BA3 /* Gnr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18484E21CFCADB400CB0BA3 /* Gnr.swift */; };
 		C18484EA1CFCADB400CB0BA3 /* Force.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18484E41CFCADB400CB0BA3 /* Force.swift */; };
@@ -51,6 +51,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C122F6901CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = maiMobile_iOS.xcdatamodel; sourceTree = "<group>"; };
 		C12CB0DB1CC541E600758F19 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnrBuilder.swift; sourceTree = "<group>"; };
 		C13DCDAF1CC923CB00AA9098 /* SecurityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityTableViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		C17C459E1CEB2711007B3822 /* GnrTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GnrTableViewCell.xib; sourceTree = "<group>"; };
 		C17C45A01CEB271E007B3822 /* PspTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PspTableViewCell.xib; sourceTree = "<group>"; };
 		C17E7BC61CF2079A00291E7F /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
-		C18484DD1CFCAD9700CB0BA3 /* maiMobile_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = maiMobile_iOS.xcdatamodel; sourceTree = "<group>"; };
 		C18484E01CFCADB400CB0BA3 /* Psp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Psp.swift; path = ../Psp.swift; sourceTree = "<group>"; };
 		C18484E21CFCADB400CB0BA3 /* Gnr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gnr.swift; path = ../Gnr.swift; sourceTree = "<group>"; };
 		C18484E41CFCADB400CB0BA3 /* Force.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Force.swift; path = ../Force.swift; sourceTree = "<group>"; };
@@ -90,6 +90,7 @@
 		C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaiAPI.swift; sourceTree = "<group>"; };
 		C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		C1EE82F01CFCCD1700574F85 /* maiMobile-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "maiMobile-iOS.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		C1EF47BF1CD3757600EBF5E5 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C1FA47A51CC64D0E00458920 /* ServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceController.swift; path = ../ServiceController.swift; sourceTree = "<group>"; };
 		C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +186,7 @@
 		C18A82321CBC255500FB3087 = {
 			isa = PBXGroup;
 			children = (
+				C122F68F1CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld */,
 				C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */,
 				C1DF40D81CD2194A003D6156 /* MapKit.framework */,
 				C18A823D1CBC255500FB3087 /* maiMobile-iOS */,
@@ -215,11 +217,16 @@
 				C13DCDAD1CC9239100AA9098 /* Main ViewControllers */,
 				C18A82421CBC255500FB3087 /* Main.storyboard */,
 				C147E04D1CF365DF00D61765 /* Assets.xcassets */,
-				C18484DD1CFCAD9700CB0BA3 /* maiMobile_iOS.xcdatamodel */,
 				C18A824A1CBC255500FB3087 /* LaunchScreen.storyboard */,
 				C18A824D1CBC255500FB3087 /* Info.plist */,
+				C1EE82F01CFCCD1700574F85 /* maiMobile-iOS.xcodeproj */,
 			);
 			path = "maiMobile-iOS";
+			sourceTree = "<group>";
+		};
+		C1EE82F11CFCCD1700574F85 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C1FA47C81CC664B400458920 /* MaiServices */ = {
@@ -311,6 +318,12 @@
 			mainGroup = C18A82321CBC255500FB3087;
 			productRefGroup = C18A823C1CBC255500FB3087 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C1EE82F11CFCCD1700574F85 /* Products */;
+					ProjectRef = C1EE82F01CFCCD1700574F85 /* maiMobile-iOS.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C18A823A1CBC255500FB3087 /* maiMobile-iOS */,
@@ -359,7 +372,6 @@
 				C1729E221CEB38E600F0681C /* PspTableViewCell.swift in Sources */,
 				C18484E61CFCADB400CB0BA3 /* Psp.swift in Sources */,
 				C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */,
-				C18484DE1CFCAD9700CB0BA3 /* maiMobile_iOS.xcdatamodel in Sources */,
 				C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */,
 				C1764A4F1CEDDE4300E9E7C4 /* TowTruckViewController.swift in Sources */,
 				C188AB721CD7617C00A8A8AE /* DetailTableViewCell.swift in Sources */,
@@ -372,6 +384,7 @@
 				C188E7A91CCA3ADC00644F01 /* PSPBuilder.swift in Sources */,
 				C1FA47CB1CC674B700458920 /* ServicesTableViewController.swift in Sources */,
 				C1729E201CEB381800F0681C /* GnrTableViewCell.swift in Sources */,
+				C122F6911CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +543,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C122F68F1CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C122F6901CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodel */,
+			);
+			currentVersion = C122F6901CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodel */;
+			path = maiMobile_iOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C18A82331CBC255500FB3087 /* Project object */;
 }

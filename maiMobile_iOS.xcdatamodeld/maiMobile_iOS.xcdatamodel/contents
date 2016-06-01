@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="Force" representedClassName=".Force" syncable="YES">
+        <attribute name="address" attributeType="String" syncable="YES"/>
+        <attribute name="distance" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="forceType" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="phone" attributeType="String" syncable="YES"/>
+        <attribute name="remoteId" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Gnr" representedClassName=".Gnr" parentEntity="Force" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Psp" representedClassName=".Psp" parentEntity="Force" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Service" representedClassName=".Service" syncable="YES">
+        <attribute name="featured" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="remoteId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Force" positionX="52" positionY="-63" width="128" height="178"/>
+        <element name="Gnr" positionX="27" positionY="180" width="128" height="58"/>
+        <element name="Psp" positionX="270" positionY="93" width="128" height="58"/>
+        <element name="Service" positionX="-162" positionY="90" width="128" height="148"/>
+    </elements>
+</model>
