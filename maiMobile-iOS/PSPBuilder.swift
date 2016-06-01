@@ -35,10 +35,10 @@ class PspBuilder {
     
     func setPspManagedObject(pspManagedObject: Psp, dictionary: [String : AnyObject]) {
         pspManagedObject.remoteId = dictionary["ObjectId"] as! Int
-//        pspManagedObject.email = (dictionary["Email"] as! String)
+        pspManagedObject.email = (dictionary["Email"] as! String)
         pspManagedObject.desc = (dictionary["Descricao"] as! String)
-        pspManagedObject.latitude = dictionary["Long"] as! Double
-        pspManagedObject.longitude = dictionary["Lat"] as! Double
+        pspManagedObject.latitude = dictionary["Lat"] as! Double
+        pspManagedObject.longitude = dictionary["Long"] as! Double
         pspManagedObject.address = dictionary["Morada"] as! String
         pspManagedObject.name = (dictionary["Nome"] as! String)
         pspManagedObject.phone = dictionary["Telefone"] as! String

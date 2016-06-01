@@ -33,7 +33,7 @@ class GnrBuilder {
     
     func setGNRManagedObject(gnrManagedObject: Gnr, dictionary: [String : AnyObject]) {
         gnrManagedObject.remoteId = dictionary["ObjectId"] as! Int
-//        gnrManagedObject.email = dictionary["Email"] as! String
+        gnrManagedObject.email = (dictionary["Email"] as! String)
         gnrManagedObject.latitude = dictionary["Lat"] as! Double
         gnrManagedObject.longitude = dictionary["Long"] as! Double
         gnrManagedObject.address = dictionary["Morada"] as! String
