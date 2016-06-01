@@ -20,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="345" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zIT-jl-QFu">
+                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="middleTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zIT-jl-QFu">
                         <rect key="frame" x="15" y="21" width="31" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
@@ -36,7 +36,7 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="401" y="379"/>
+            <point key="canvasLocation" x="282" y="352"/>
         </tableViewCell>
     </objects>
 </document>
