@@ -12,7 +12,7 @@ import MapKit
 class DetailTableViewController: UITableViewController {
     
     var force: Force!
-    let titles = ["Descrição", "Endereço", "Telephone", "E-mail"]
+    let titles = ["Descrição", "Endereço", "Telefone", "E-mail"]
     let images = ["","directions","phone","mail"]
     
     let descriptionIndexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -31,18 +31,19 @@ class DetailTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! DetailTableViewCell
         
+        let cell = tableView.dequeueReusableCellWithIdentifier("directionsCell", forIndexPath: indexPath) as! DirectionsTableViewCell
+//        let cell = tableView.dequeueReusableCellWithIdentifier("standardCell", forIndexPath: indexPath) as! DetailTableViewCell
         var subtitle = ""
         switch indexPath {
         case descriptionIndexPath:
-            force.forceType == "psp" ? (subtitle = (force as! Psp).desc!) : (subtitle = "")
+            force.forceType == "psp" ? (subtitle = (force as! Psp).desc!) : (subtitle = (force as! Gnr).name)
         case addressIndexPath:
             subtitle = force.address
+            cell.imageLabel.text = "Obter direções"
         case phoneIndexPath:
             subtitle = force.phone
-        case emailIndexPath:
-            break
+        case emailIndexPath: break
         default: break
         }
         
