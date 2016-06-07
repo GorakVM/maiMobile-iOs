@@ -88,6 +88,7 @@
 		C18A824B1CBC255500FB3087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C18A824D1CBC255500FB3087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceBuilder.swift; path = ../ServiceBuilder.swift; sourceTree = "<group>"; };
+		C1DC831D1D06CBDC00AA9716 /* default.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
 		C1DF40D81CD2194A003D6156 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaiAPI.swift; sourceTree = "<group>"; };
@@ -189,6 +190,7 @@
 		C18A82321CBC255500FB3087 = {
 			isa = PBXGroup;
 			children = (
+				C1DC831D1D06CBDC00AA9716 /* default.gpx */,
 				C122F68F1CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld */,
 				C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */,
 				C1DF40D81CD2194A003D6156 /* MapKit.framework */,
