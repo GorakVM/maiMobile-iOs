@@ -11,8 +11,6 @@ import CoreLocation
 import CoreData
 
 class SecurityTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, CLLocationManagerDelegate {
-
-    var fetchedResultsController: NSFetchedResultsController!
     
     enum Entity: String {
         case Force = "Force"
@@ -24,8 +22,6 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
         case Gnr = "gnrCell"
         case Psp = "pspCell"
     }
-    
-//    var count = 0
     
     var selectedForceType = Force.ForceType.All
     let isLocationServicesEnabled = CLLocationManager.locationServicesEnabled()
@@ -39,11 +35,9 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
         setSelectedForceType()
     }
     
-    let locationManager = CLLocationManager()
+    var fetchedResultsController: NSFetchedResultsController!
     
-    let forceFetchRequest = NSFetchRequest(entityName: Entity.Force.rawValue)
-    let gnrFetchRequest = NSFetchRequest(entityName: Entity.Gnr.rawValue)
-    let pspFetchRequest = NSFetchRequest(entityName: Entity.Psp.rawValue)
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,25 +49,35 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
         
         segmentedControl.tintColor = UIColor.whiteColor()
         
-        updateFetchRequest()
+        createFetchedResultsController()
         
     }
     
-    private func updateFetchRequest() {
-        let fetchRequest = makeFetchRequest()
+    private func createFetchedResultsController() {
+        let request = NSFetchRequest()
+        request.fetchBatchSize = 12
+        updateFetchRequest(request)
+        
         fetchedResultsController = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
+            fetchRequest: request,
             managedObjectContext: fetcher.sharedMainContext,
             sectionNameKeyPath: nil,
             cacheName: nil
         )
         fetchedResultsController.delegate = self
-        try! fetchedResultsController.performFetch()
         
+        try! fetchedResultsController.performFetch()
+    }
+    
+    private func updateFetchedResultsControllerFetchRequest() {
+        let request = fetchedResultsController.fetchRequest
+        updateFetchRequest(request)
+        
+        try! fetchedResultsController.performFetch()
         securityTableView.reloadData()
     }
     
-    private func makeFetchRequest() -> NSFetchRequest {
+    private func updateFetchRequest(request: NSFetchRequest) {
         
         let entityName: String
         switch selectedForceType {
@@ -85,13 +89,13 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
             entityName = "Psp"
         }
         
-        let request = NSFetchRequest(entityName: entityName)
+        request.entity = NSEntityDescription.entityForName(
+            entityName,
+            inManagedObjectContext: fetcher.sharedMainContext
+        )
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        request.fetchBatchSize = 12
-        
-        return request
     }
-    
+
     // MARK: - Table view data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -164,7 +168,7 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
             break
         }
         
-        updateFetchRequest()
+        updateFetchedResultsControllerFetchRequest()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -192,11 +196,6 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
             }
             
         }
-        
-        let orderByDistanceDescriptor = NSSortDescriptor(key: "distance", ascending: true)
-        forceFetchRequest.sortDescriptors = [orderByDistanceDescriptor]
-        gnrFetchRequest.sortDescriptors = [orderByDistanceDescriptor]
-        pspFetchRequest.sortDescriptors = [orderByDistanceDescriptor]
                 
     }
     
