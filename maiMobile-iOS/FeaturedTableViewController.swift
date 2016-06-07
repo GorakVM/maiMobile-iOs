@@ -27,7 +27,6 @@ class FeaturedTableViewController: ServiceController, NSFetchedResultsController
         try! featuredFetchResultController.performFetch()
     }
     
-    
     //MARK: - UITableViewDataSource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -42,7 +41,10 @@ class FeaturedTableViewController: ServiceController, NSFetchedResultsController
         let featuredService = featuredFetchResultController.objectAtIndexPath(indexPath) as! Service
         cell.titleLabel.text = featuredService.title
         cell.noteLabel.text = featuredService.note
-        cell.imageview.image = UIImage(data: NSData(contentsOfURL: featuredService.imageUrl)!)
+        if let imageUrl = featuredService.imageUrl as? NSURL {
+            cell.imageview.image = UIImage(data: NSData(contentsOfURL: imageUrl)!)
+        }
+        
         return cell
     }
     
@@ -60,6 +62,7 @@ class FeaturedTableViewController: ServiceController, NSFetchedResultsController
         }
         navigationController?.pushViewController(nextViewController, animated: true)
     }
+    
     //Mark: - NSFetchedResultsControllerDelegate
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
