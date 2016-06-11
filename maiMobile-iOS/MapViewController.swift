@@ -31,8 +31,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        locationManager.requestWhenInUseAuthorization()
-        //        locationManager.delegate = self
+        
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
         
         let fetchAllForces = NSFetchRequest(entityName: "Force")
         fetchAllForces.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
@@ -49,13 +50,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 setZoomToRegion(userLocation)
             }
         }
-        
-        //MARK: - To be deleted, used only for the meeting
-        
-        let lisbonCoordinates = CLLocation(latitude: 38.71389, longitude: -9.13944)
-        setZoomToRegion(lisbonCoordinates)
-        
-        //MARK: - End
         
         setAnnotationsForVisibleRectInMap()
     }// end viewdidload
@@ -104,7 +98,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
         } else {
             reusableAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "annotation")
-            
         }
         
         let rightButton = UIButton(type: .DetailDisclosure)
@@ -138,7 +131,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let pointForAnnotation = MKMapPointForCoordinate(annotation.coordinate)
             let isAnnotationInVisibleRect = MKMapRectContainsPoint(mapRect, pointForAnnotation)
             if isAnnotationInVisibleRect {
-                mapView.addAnnotation(annotation)
+                NSOperationQueue.mainQueue().addOperationWithBlock({
+                    self.mapView.addAnnotation(annotation)
+                })
             }
         }
     }
