@@ -9,8 +9,5 @@
 import UIKit
 
 class GnrTableViewCell: UITableViewCell {
-    
-//    @IBOutlet weak var titleLabel: UILabel!
-//    @IBOutlet weak var rightDetailLabel: UILabel!
-    
+ 
 }
