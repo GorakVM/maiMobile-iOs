@@ -40,24 +40,48 @@ class ServicesTableViewController: ServiceController, NSFetchedResultsController
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellNibIdentifier, forIndexPath: indexPath) as! ServicesTableViewCell
+        cell.leftImageView.image = nil
         let service = serviceFetchResultController.objectAtIndexPath(indexPath) as! Service
         cell.titleLabel.text = service.title
         cell.noteLabel.text = service.note
-        cell.imageview.image = UIImage(data: NSData(contentsOfURL: service.imageUrl)!)
+        if let imageUrl = service.imageUrl {
+            NSOperationQueue.mainQueue().addOperationWithBlock {
+                cell.leftImageView.image = UIImage(data: NSData(contentsOfURL: imageUrl)!)
+            }
+        }
         return cell
-    }
-    
-    //MARK: - NSFetchResultController
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.reloadData()
     }
     
     //MARK: - UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let service = serviceFetchResultController.objectAtIndexPath(indexPath) as! Service
         let webViewController = storyboard?.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
-        webViewController.url = service.url
+        if let url = service.url {
+            webViewController.url = url
+        }
         navigationController?.pushViewController(webViewController, animated: true)
+    }
+    
+    //MARK: - NSFetchResultController
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case .Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+        case .Update:
+            tableView.reloadRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+        case .Delete:
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        case .Move:
+            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
     }
     
 }
