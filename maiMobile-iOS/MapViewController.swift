@@ -85,7 +85,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        mapView.removeAnnotations(forceAnnotation)
         setAnnotationsForVisibleRectInMap()
     }
     
@@ -134,8 +133,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 NSOperationQueue.mainQueue().addOperationWithBlock({
                     self.mapView.addAnnotation(annotation)
                 })
+            } else {
+                NSOperationQueue.mainQueue().addOperationWithBlock({
+                    self.mapView.removeAnnotation(annotation)
+                })
             }
         }
+        
     }
     
     func updateAnnotationsToMap() {
