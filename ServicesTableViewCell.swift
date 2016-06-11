@@ -11,7 +11,7 @@ import UIKit
 class ServicesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var imageview: UIImageView!
+    @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var noteLabel: UILabel!
     
 }
