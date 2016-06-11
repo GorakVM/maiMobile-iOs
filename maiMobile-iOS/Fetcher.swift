@@ -40,14 +40,14 @@ class Fetcher {
         let privateManagedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
         privateManagedObjectContext.persistentStoreCoordinator = CoreDataStack.sharedPersistentCoordinator()
         return privateManagedObjectContext
-    } 
+    }
     
     func loadServicesToCoreData() {
         let privateContext = Fetcher.privateManagedObjectContext()
         MaiAPI().getServices { (servicesArray) in
-                ServiceBuilder().servicesFromArray(servicesArray, inContext: privateContext)
-                privateContext.performBlock({
-                    self.saveContext(privateContext)
+            ServiceBuilder().servicesFromArray(servicesArray, inContext: privateContext)
+            privateContext.performBlock({
+                self.saveContext(privateContext)
             })
         }
     }
@@ -73,10 +73,12 @@ class Fetcher {
     }
     
     func saveContext(managedContext: NSManagedObjectContext) {
-        do {
-            try managedContext.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
+        if managedContext.hasChanges {
+            do {
+                try managedContext.save()
+            } catch {
+                fatalError("Failure to save context: \(error)")
+            }
         }
     }
     
