@@ -40,9 +40,15 @@ class ServiceBuilder {
         service.position = dictionary["Position"] as! Int
         service.note = (dictionary["Description"] as! String)
         service.title = (dictionary["Title"] as! String)
-        service.imageUrl = NSURL(string: dictionary["Image"] as! String)!
-        if let urlString = dictionary["Url"] as? String {
-            service.url = NSURL(string: urlString)!
+        if let imageUrlString = dictionary["Image"] as? String, imageUrl = NSURL(string: imageUrlString) {
+            !imageUrlString.isEmpty ? (service.imageUrl = imageUrl) : (service.imageUrl = nil)
+        } else {
+            service.imageUrl = nil
+        }
+        if let urlString = dictionary["Url"] as? String, url = NSURL(string: urlString) {
+            !urlString.isEmpty ? (service.url = url) : (service.url = nil)
+        } else {
+            service.url = nil
         }
     }
     
