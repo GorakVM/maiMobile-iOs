@@ -1,5 +1,5 @@
 //
-//  Service+CoreDataProperties.swift
+//  Service.swift
 //  maiMobile-iOS
 //
 //  Created by Gil Lopes on 18/04/16.
@@ -15,12 +15,12 @@ import CoreData
 extension Service {
     
     @NSManaged var featured: Bool
-    @NSManaged var imageUrl: NSURL
+    @NSManaged var imageUrl: NSURL?
     @NSManaged var note: String?
     @NSManaged var position: Int
     @NSManaged var remoteId: Int
     @NSManaged var title: String?
-    @NSManaged var url: NSURL
+    @NSManaged var url: NSURL?
     
 }
 
