@@ -12,37 +12,36 @@ import MapKit
 
 class SecurityBaseController: UIViewController {
     
-    var currentViewController = UIViewController()
-    var mapViewController: MapViewController!
-    var securityTableViewController: SecurityTableViewController!
+    var mapViewController: UIViewController!
+    var securityTableViewController: UIViewController!
     
     @IBOutlet weak var barButtonItem: UIBarButtonItem!
     
     @IBAction func barButtonItem(sender: UIBarButtonItem) {
         var nextViewController: UIViewController! = nil
-        view.willRemoveSubview(currentViewController.view)
+        let childViewcontroller = childViewControllers.first!
         barButtonItem.enabled = false
         barButtonItem.image = nil
-        if (currentViewController === mapViewController) {
+        
+        if (childViewcontroller === mapViewController) {
             nextViewController = securityTableViewController
             barButtonItem.image = UIImage(named: "mapBarButtonItem")
             
-        } else if (currentViewController === securityTableViewController) {
+        } else if (childViewcontroller === securityTableViewController) {
             nextViewController = mapViewController
             barButtonItem.image = UIImage(named: "bulletListBarButtonItem")
         }
         
+        childViewcontroller.willMoveToParentViewController(nil)
         addChildViewController(nextViewController)
-        nextViewController.view.frame = view.bounds
-        currentViewController.willMoveToParentViewController(nil)
         
-        transitionFromViewController(currentViewController, toViewController: nextViewController, duration: NSTimeInterval.abs(1), options: .TransitionFlipFromRight, animations: nil, completion: { (finished) in
-            self.currentViewController.view.removeFromSuperview()
-            self.view.addSubview(nextViewController.view)
+        print("childViewControllers.first!.parentViewController: \(childViewControllers.first!.parentViewController!)")
+        print("nextViewController.parentViewController: \(nextViewController.parentViewController!)")
+        
+        transitionFromViewController(childViewcontroller, toViewController: nextViewController, duration: NSTimeInterval.abs(1), options: .TransitionFlipFromRight, animations: {}, completion: { (finished) in
+            childViewcontroller.removeFromParentViewController()
+            nextViewController.didMoveToParentViewController(self)
             if finished {
-                self.currentViewController.removeFromParentViewController()
-                nextViewController.didMoveToParentViewController(self)
-                self.currentViewController = nextViewController
                 nextViewController = nil
                 self.barButtonItem.enabled = true
             }
@@ -57,10 +56,8 @@ class SecurityBaseController: UIViewController {
         mapViewController = storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
         securityTableViewController = storyboard!.instantiateViewControllerWithIdentifier("SecurityTableViewController") as! SecurityTableViewController
         barButtonItem.image = UIImage(named: "bulletListBarButtonItem")
-        currentViewController = mapViewController
-        addChildViewController(currentViewController)
-        currentViewController.view.frame = view.bounds
-        view.addSubview(mapViewController.view)
+        addChildViewController(mapViewController)
+        view.insertSubview(mapViewController.view, atIndex: 0)
         mapViewController.didMoveToParentViewController(self)
         
     }
