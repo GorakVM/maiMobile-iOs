@@ -54,6 +54,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         setAnnotationsForVisibleRectInMap()
     }// end viewdidload
     
+    // MARK: - CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         //This method is called whenever the user changes the status of the location service of his device
         
@@ -64,6 +65,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    // MARK: - MKMapViewDelegate
     func mapViewDidFinishLoadingMap(mapView: MKMapView) {
         setAnnotationsForVisibleRectInMap()
     }
@@ -123,6 +125,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     }
     
+    // MARK: - Custom Methods
     func setAnnotationsForVisibleRectInMap() {
         let mapRect = mapView.visibleMapRect
         
@@ -162,6 +165,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    // MARK: - NSFetchedResultsControllerDelegate
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         updateAnnotationsToMap()
         setAnnotationsForVisibleRectInMap()
