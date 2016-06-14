@@ -14,38 +14,32 @@ class SecurityBaseController: UIViewController {
     
     var mapViewController: UIViewController!
     var securityTableViewController: UIViewController!
+    var currentController: UIViewController!
     
     @IBOutlet weak var barButtonItem: UIBarButtonItem!
+    @IBOutlet weak var containerView: UIView!
     
     @IBAction func barButtonItem(sender: UIBarButtonItem) {
-        var nextViewController: UIViewController! = nil
-        let childViewcontroller = childViewControllers.first!
-        barButtonItem.enabled = false
-        barButtonItem.image = nil
         
-        if (childViewcontroller === mapViewController) {
-            nextViewController = securityTableViewController
-            barButtonItem.image = UIImage(named: "mapBarButtonItem")
+        UIView.transitionWithView(containerView, duration: NSTimeInterval.abs(1), options: UIViewAnimationOptions.TransitionFlipFromRight, animations: {
+            var nextView: UIView!
+            self.currentController.view.removeFromSuperview()
+            self.barButtonItem.enabled = false
+            self.barButtonItem.image = nil
             
-        } else if (childViewcontroller === securityTableViewController) {
-            nextViewController = mapViewController
-            barButtonItem.image = UIImage(named: "bulletListBarButtonItem")
-        }
-        
-        childViewcontroller.willMoveToParentViewController(nil)
-        addChildViewController(nextViewController)
-        
-        print("childViewControllers.first!.parentViewController: \(childViewControllers.first!.parentViewController!)")
-        print("nextViewController.parentViewController: \(nextViewController.parentViewController!)")
-        
-        transitionFromViewController(childViewcontroller, toViewController: nextViewController, duration: NSTimeInterval.abs(1), options: .TransitionFlipFromRight, animations: {}, completion: { (finished) in
-            childViewcontroller.removeFromParentViewController()
-            nextViewController.didMoveToParentViewController(self)
-            if finished {
-                nextViewController = nil
-                self.barButtonItem.enabled = true
+            if (self.currentController === self.mapViewController) {
+                nextView = self.securityTableViewController.view
+                self.barButtonItem.image = UIImage(named: "mapBarButtonItem")
+                self.currentController = self.securityTableViewController
+            } else if (self.currentController === self.securityTableViewController) {
+                nextView = self.mapViewController.view
+                self.barButtonItem.image = UIImage(named: "bulletListBarButtonItem")
+                self.currentController = self.mapViewController
             }
-        })
+            self.containerView.addSubview(nextView)
+        }) { (finished) in
+            self.barButtonItem.enabled = true
+        }
         
     }
     
@@ -56,9 +50,13 @@ class SecurityBaseController: UIViewController {
         mapViewController = storyboard!.instantiateViewControllerWithIdentifier("MapViewController") as! MapViewController
         securityTableViewController = storyboard!.instantiateViewControllerWithIdentifier("SecurityTableViewController") as! SecurityTableViewController
         barButtonItem.image = UIImage(named: "bulletListBarButtonItem")
-        addChildViewController(mapViewController)
-        view.insertSubview(mapViewController.view, atIndex: 0)
-        mapViewController.didMoveToParentViewController(self)
+        
+        let topInset = topLayoutGuide.length
+        let bottomInset = bottomLayoutGuide.length
+        currentController = mapViewController
+        containerView.frame = CGRectMake(0, topInset, view.frame.width, view.frame.height - topInset - bottomInset)
+        containerView.insertSubview(mapViewController.view, atIndex: 0)
+        //        mapViewController.didMoveToParentViewController(self)
         
     }
     
