@@ -21,19 +21,20 @@ class SecurityBaseController: UIViewController {
     
     @IBAction func barButtonItem(sender: UIBarButtonItem) {
         var nextView: UIView!
-        self.barButtonItem.enabled = false
-        self.barButtonItem.image = nil
-        if (self.currentController === self.mapViewController) {
-            nextView = self.securityTableViewController.view
-            self.barButtonItem.image = UIImage(named: "mapBarButtonItem")
-            self.currentController = self.securityTableViewController
-        } else if (self.currentController === self.securityTableViewController) {
-            nextView = self.mapViewController.view
-            self.barButtonItem.image = UIImage(named: "bulletListBarButtonItem")
-            self.currentController = self.mapViewController
+        var containerSubViews = containerView.subviews
+        barButtonItem.enabled = false
+        barButtonItem.image = nil
+        if (currentController === mapViewController) {
+            nextView = securityTableViewController.view
+            barButtonItem.image = UIImage(named: "mapBarButtonItem")
+            currentController = securityTableViewController
+        } else if (currentController === securityTableViewController) {
+            nextView = mapViewController.view
+            barButtonItem.image = UIImage(named: "bulletListBarButtonItem")
+            currentController = mapViewController
         }
         UIView.transitionWithView(containerView, duration: NSTimeInterval.abs(1), options: UIViewAnimationOptions.TransitionFlipFromRight, animations: {
-            self.currentController.view.removeFromSuperview()
+            containerSubViews.removeAll()
             self.containerView.addSubview(nextView)
         }) { (finished) in
             self.barButtonItem.enabled = true
@@ -54,7 +55,6 @@ class SecurityBaseController: UIViewController {
         currentController = mapViewController
         containerView.frame = CGRectMake(0, topInset, view.frame.width, view.frame.height - topInset - bottomInset)
         containerView.insertSubview(mapViewController.view, atIndex: 0)
-        //        mapViewController.didMoveToParentViewController(self)
         
     }
     
