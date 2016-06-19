@@ -41,6 +41,7 @@
 		C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A823E1CBC255500FB3087 /* AppDelegate.swift */; };
 		C18A82441CBC255500FB3087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A82421CBC255500FB3087 /* Main.storyboard */; };
 		C18A824C1CBC255500FB3087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A824A1CBC255500FB3087 /* LaunchScreen.storyboard */; };
+		C1C33EDA1D16F31900879F05 /* SecurityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C33ED91D16F31900879F05 /* SecurityHelper.swift */; };
 		C1DF40D91CD2194A003D6156 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DF40D81CD2194A003D6156 /* MapKit.framework */; };
 		C1DF40DB1CD22AB2003D6156 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */; };
 		C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */; };
@@ -89,6 +90,7 @@
 		C18A82431CBC255500FB3087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C18A824B1CBC255500FB3087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C18A824D1CBC255500FB3087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1C33ED91D16F31900879F05 /* SecurityHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityHelper.swift; sourceTree = "<group>"; };
 		C1DC831D1D06CBDC00AA9716 /* default.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
 		C1DF40D81CD2194A003D6156 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				C13DCDB31CC924BA00AA9098 /* SecurityBaseController.swift */,
+				C1C33ED91D16F31900879F05 /* SecurityHelper.swift */,
 				C13DCDAF1CC923CB00AA9098 /* SecurityTableViewController.swift */,
 			);
 			name = SecurityViewControllers;
@@ -391,6 +394,7 @@
 				C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */,
 				C10ADB161D0EC0D600F8AF48 /* ServiceController.swift in Sources */,
 				C13DCDB41CC924BA00AA9098 /* SecurityBaseController.swift in Sources */,
+				C1C33EDA1D16F31900879F05 /* SecurityHelper.swift in Sources */,
 				C188E7AB1CCA3D2800644F01 /* PspAPIService.swift in Sources */,
 				C13DCDB01CC923CB00AA9098 /* SecurityTableViewController.swift in Sources */,
 				C1EF47C01CD3757600EBF5E5 /* Utils.swift in Sources */,
