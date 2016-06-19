@@ -14,7 +14,6 @@ class ServiceController: UITableViewController {
     let cellNibIdentifier = "serviceCell"
     
     override func viewDidLoad() {
-        tableView.rowHeight = CGFloat(103)
-        
+        tableView.rowHeight = 103
     }
 }

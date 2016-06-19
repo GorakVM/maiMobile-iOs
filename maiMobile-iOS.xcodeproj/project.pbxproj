@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C105AC2C1CFF36D600284932 /* DirectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C105AC2B1CFF36D600284932 /* DirectionsTableViewCell.swift */; };
+		C10ADB0E1D0EC0A500F8AF48 /* ServiceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10ADB0D1D0EC0A500F8AF48 /* ServiceBuilder.swift */; };
+		C10ADB121D0EC0BC00F8AF48 /* Force.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10ADB0F1D0EC0BC00F8AF48 /* Force.swift */; };
+		C10ADB131D0EC0BC00F8AF48 /* Gnr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10ADB101D0EC0BC00F8AF48 /* Gnr.swift */; };
+		C10ADB141D0EC0BC00F8AF48 /* Psp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10ADB111D0EC0BC00F8AF48 /* Psp.swift */; };
+		C10ADB161D0EC0D600F8AF48 /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10ADB151D0EC0D600F8AF48 /* ServiceController.swift */; };
+		C10ADB191D0EC0EA00F8AF48 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10ADB171D0EC0EA00F8AF48 /* ServicesTableViewCell.swift */; };
+		C10ADB1A1D0EC0EA00F8AF48 /* ServicesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10ADB181D0EC0EA00F8AF48 /* ServicesTableViewCell.xib */; };
 		C122F6911CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C122F68F1CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodeld */; };
 		C12CB0DC1CC541E600758F19 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12CB0DB1CC541E600758F19 /* Service.swift */; };
 		C13DCDAC1CC8DF0600AA9098 /* GnrBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */; };
@@ -18,8 +25,6 @@
 		C147E04E1CF365DF00D61765 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C147E04D1CF365DF00D61765 /* Assets.xcassets */; };
 		C154F7C11CC6A46200A8A171 /* FeaturedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */; };
 		C154F7C31CC78C5C00A8A171 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */; };
-		C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7C61CC7C48300A8A171 /* ServicesTableViewCell.swift */; };
-		C154F7C91CC7C48300A8A171 /* ServicesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C154F7C71CC7C48300A8A171 /* ServicesTableViewCell.xib */; };
 		C154F7CB1CC7D37000A8A171 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7CA1CC7D37000A8A171 /* JSONParser.swift */; };
 		C154F7CE1CC7F3B700A8A171 /* GnrAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154F7CD1CC7F3B700A8A171 /* GnrAPIService.swift */; };
 		C1729E201CEB381800F0681C /* GnrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1729E1F1CEB381800F0681C /* GnrTableViewCell.swift */; };
@@ -28,9 +33,6 @@
 		C1764A4F1CEDDE4300E9E7C4 /* TowTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1764A4E1CEDDE4300E9E7C4 /* TowTruckViewController.swift */; };
 		C17C459F1CEB2711007B3822 /* GnrTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17C459E1CEB2711007B3822 /* GnrTableViewCell.xib */; };
 		C17C45A11CEB271E007B3822 /* PspTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C17C45A01CEB271E007B3822 /* PspTableViewCell.xib */; };
-		C18484E61CFCADB400CB0BA3 /* Psp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18484E01CFCADB400CB0BA3 /* Psp.swift */; };
-		C18484E81CFCADB400CB0BA3 /* Gnr.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18484E21CFCADB400CB0BA3 /* Gnr.swift */; };
-		C18484EA1CFCADB400CB0BA3 /* Force.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18484E41CFCADB400CB0BA3 /* Force.swift */; };
 		C188AB701CD7616A00A8A8AE /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188AB6F1CD7616A00A8A8AE /* DetailTableViewController.swift */; };
 		C188AB721CD7617C00A8A8AE /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188AB711CD7617C00A8A8AE /* DetailTableViewCell.swift */; };
 		C188E7A91CCA3ADC00644F01 /* PSPBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188E7A81CCA3ADC00644F01 /* PSPBuilder.swift */; };
@@ -39,13 +41,11 @@
 		C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A823E1CBC255500FB3087 /* AppDelegate.swift */; };
 		C18A82441CBC255500FB3087 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A82421CBC255500FB3087 /* Main.storyboard */; };
 		C18A824C1CBC255500FB3087 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18A824A1CBC255500FB3087 /* LaunchScreen.storyboard */; };
-		C1A08DD01CC40D5400906EFE /* ServiceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */; };
 		C1DF40D91CD2194A003D6156 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DF40D81CD2194A003D6156 /* MapKit.framework */; };
 		C1DF40DB1CD22AB2003D6156 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */; };
 		C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7AC311CBE9F11004D00A3 /* MaiAPI.swift */; };
 		C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */; };
 		C1EF47C01CD3757600EBF5E5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EF47BF1CD3757600EBF5E5 /* Utils.swift */; };
-		C1FA47A61CC64D0E00458920 /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FA47A51CC64D0E00458920 /* ServiceController.swift */; };
 		C1FA47CB1CC674B700458920 /* ServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */; };
 		C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */; };
 		C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FE35271CBD57B200F7B745 /* XMLParser.swift */; };
@@ -53,6 +53,13 @@
 
 /* Begin PBXFileReference section */
 		C105AC2B1CFF36D600284932 /* DirectionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableViewCell.swift; sourceTree = "<group>"; };
+		C10ADB0D1D0EC0A500F8AF48 /* ServiceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceBuilder.swift; sourceTree = "<group>"; };
+		C10ADB0F1D0EC0BC00F8AF48 /* Force.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Force.swift; sourceTree = "<group>"; };
+		C10ADB101D0EC0BC00F8AF48 /* Gnr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gnr.swift; sourceTree = "<group>"; };
+		C10ADB111D0EC0BC00F8AF48 /* Psp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Psp.swift; sourceTree = "<group>"; };
+		C10ADB151D0EC0D600F8AF48 /* ServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceController.swift; sourceTree = "<group>"; };
+		C10ADB171D0EC0EA00F8AF48 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewCell.swift; sourceTree = "<group>"; };
+		C10ADB181D0EC0EA00F8AF48 /* ServicesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServicesTableViewCell.xib; sourceTree = "<group>"; };
 		C122F6901CFCD3D800E5CE62 /* maiMobile_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = maiMobile_iOS.xcdatamodel; sourceTree = "<group>"; };
 		C12CB0DB1CC541E600758F19 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnrBuilder.swift; sourceTree = "<group>"; };
@@ -63,8 +70,6 @@
 		C147E04D1CF365DF00D61765 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedTableViewController.swift; sourceTree = "<group>"; };
 		C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		C154F7C61CC7C48300A8A171 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServicesTableViewCell.swift; path = ../ServicesTableViewCell.swift; sourceTree = "<group>"; };
-		C154F7C71CC7C48300A8A171 /* ServicesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ServicesTableViewCell.xib; path = ../ServicesTableViewCell.xib; sourceTree = "<group>"; };
 		C154F7CA1CC7D37000A8A171 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		C154F7CD1CC7F3B700A8A171 /* GnrAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnrAPIService.swift; sourceTree = "<group>"; };
 		C1729E1F1CEB381800F0681C /* GnrTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnrTableViewCell.swift; sourceTree = "<group>"; };
@@ -74,9 +79,6 @@
 		C17C459E1CEB2711007B3822 /* GnrTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GnrTableViewCell.xib; sourceTree = "<group>"; };
 		C17C45A01CEB271E007B3822 /* PspTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PspTableViewCell.xib; sourceTree = "<group>"; };
 		C17E7BC61CF2079A00291E7F /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
-		C18484E01CFCADB400CB0BA3 /* Psp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Psp.swift; path = ../Psp.swift; sourceTree = "<group>"; };
-		C18484E21CFCADB400CB0BA3 /* Gnr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Gnr.swift; path = ../Gnr.swift; sourceTree = "<group>"; };
-		C18484E41CFCADB400CB0BA3 /* Force.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Force.swift; path = ../Force.swift; sourceTree = "<group>"; };
 		C188AB6F1CD7616A00A8A8AE /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		C188AB711CD7617C00A8A8AE /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		C188E7A81CCA3ADC00644F01 /* PSPBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSPBuilder.swift; sourceTree = "<group>"; };
@@ -87,7 +89,6 @@
 		C18A82431CBC255500FB3087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C18A824B1CBC255500FB3087 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C18A824D1CBC255500FB3087 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceBuilder.swift; path = ../ServiceBuilder.swift; sourceTree = "<group>"; };
 		C1DC831D1D06CBDC00AA9716 /* default.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = default.gpx; sourceTree = "<group>"; };
 		C1DF40D81CD2194A003D6156 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C1DF40DA1CD22AB2003D6156 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -95,7 +96,6 @@
 		C1E7AC331CBEA56C004D00A3 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		C1EE82F01CFCCD1700574F85 /* maiMobile-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "maiMobile-iOS.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		C1EF47BF1CD3757600EBF5E5 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		C1FA47A51CC64D0E00458920 /* ServiceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceController.swift; path = ../ServiceController.swift; sourceTree = "<group>"; };
 		C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewController.swift; sourceTree = "<group>"; };
 		C1FE35241CBD4D2A00F7B745 /* ServicesAPIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesAPIService.swift; sourceTree = "<group>"; };
 		C1FE35271CBD57B200F7B745 /* XMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
@@ -118,23 +118,22 @@
 			isa = PBXGroup;
 			children = (
 				C1FA47C81CC664B400458920 /* MaiServices */,
-				C13DCDAE1CC923AF00AA9098 /* Segurança */,
+				C13DCDAE1CC923AF00AA9098 /* Security */,
 				C1764A4C1CEDCB9A00E9E7C4 /* WebViewController.swift */,
 				C1764A4E1CEDDE4300E9E7C4 /* TowTruckViewController.swift */,
 			);
 			name = "Main ViewControllers";
 			sourceTree = "<group>";
 		};
-		C13DCDAE1CC923AF00AA9098 /* Segurança */ = {
+		C13DCDAE1CC923AF00AA9098 /* Security */ = {
 			isa = PBXGroup;
 			children = (
 				C144871B1CEA41B200077835 /* Cells */,
-				C13DCDB31CC924BA00AA9098 /* SecurityBaseController.swift */,
+				C1C33EDB1D16F32000879F05 /* SecurityViewControllers */,
 				C188E7AE1CCA3F3400644F01 /* MapViewController.swift */,
-				C13DCDAF1CC923CB00AA9098 /* SecurityTableViewController.swift */,
 				C188AB6E1CD7614800A8A8AE /* DetailTableViewController */,
 			);
-			name = "Segurança";
+			name = Security;
 			sourceTree = "<group>";
 		};
 		C14487161CEA360000077835 /* Font */ = {
@@ -161,7 +160,7 @@
 		C154F7CC1CC7D3B600A8A171 /* Builders */ = {
 			isa = PBXGroup;
 			children = (
-				C1A08DCF1CC40D5400906EFE /* ServiceBuilder.swift */,
+				C10ADB0D1D0EC0A500F8AF48 /* ServiceBuilder.swift */,
 				C13DCDAB1CC8DF0600AA9098 /* GnrBuilder.swift */,
 				C188E7A81CCA3ADC00644F01 /* PSPBuilder.swift */,
 			);
@@ -171,8 +170,8 @@
 		C17E7BC71CF2087B00291E7F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C154F7C61CC7C48300A8A171 /* ServicesTableViewCell.swift */,
-				C154F7C71CC7C48300A8A171 /* ServicesTableViewCell.xib */,
+				C10ADB171D0EC0EA00F8AF48 /* ServicesTableViewCell.swift */,
+				C10ADB181D0EC0EA00F8AF48 /* ServicesTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -229,6 +228,15 @@
 			path = "maiMobile-iOS";
 			sourceTree = "<group>";
 		};
+		C1C33EDB1D16F32000879F05 /* SecurityViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C13DCDB31CC924BA00AA9098 /* SecurityBaseController.swift */,
+				C13DCDAF1CC923CB00AA9098 /* SecurityTableViewController.swift */,
+			);
+			name = SecurityViewControllers;
+			sourceTree = "<group>";
+		};
 		C1EE82F11CFCCD1700574F85 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
@@ -238,7 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				C17E7BC71CF2087B00291E7F /* Cell */,
-				C1FA47A51CC64D0E00458920 /* ServiceController.swift */,
+				C10ADB151D0EC0D600F8AF48 /* ServiceController.swift */,
 				C1FA47CA1CC674B700458920 /* ServicesTableViewController.swift */,
 				C154F7C01CC6A46200A8A171 /* FeaturedTableViewController.swift */,
 			);
@@ -248,9 +256,9 @@
 		C1FA47C91CC664DF00458920 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C18484E01CFCADB400CB0BA3 /* Psp.swift */,
-				C18484E21CFCADB400CB0BA3 /* Gnr.swift */,
-				C18484E41CFCADB400CB0BA3 /* Force.swift */,
+				C10ADB0F1D0EC0BC00F8AF48 /* Force.swift */,
+				C10ADB101D0EC0BC00F8AF48 /* Gnr.swift */,
+				C10ADB111D0EC0BC00F8AF48 /* Psp.swift */,
 				C12CB0DB1CC541E600758F19 /* Service.swift */,
 				C154F7C21CC78C5C00A8A171 /* CoreDataStack.swift */,
 			);
@@ -343,8 +351,8 @@
 			files = (
 				C18A824C1CBC255500FB3087 /* LaunchScreen.storyboard in Resources */,
 				C14487181CEA362A00077835 /* Lato-Bold.ttf in Resources */,
-				C154F7C91CC7C48300A8A171 /* ServicesTableViewCell.xib in Resources */,
 				C144871A1CEA363800077835 /* Lato-Regular.ttf in Resources */,
+				C10ADB1A1D0EC0EA00F8AF48 /* ServicesTableViewCell.xib in Resources */,
 				C18A82441CBC255500FB3087 /* Main.storyboard in Resources */,
 				C17C45A11CEB271E007B3822 /* PspTableViewCell.xib in Resources */,
 				C147E04E1CF365DF00D61765 /* Assets.xcassets in Resources */,
@@ -359,34 +367,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1FA47A61CC64D0E00458920 /* ServiceController.swift in Sources */,
 				C18A823F1CBC255500FB3087 /* AppDelegate.swift in Sources */,
 				C154F7CE1CC7F3B700A8A171 /* GnrAPIService.swift in Sources */,
 				C154F7CB1CC7D37000A8A171 /* JSONParser.swift in Sources */,
 				C1FE35251CBD4D2A00F7B745 /* ServicesAPIService.swift in Sources */,
 				C154F7C31CC78C5C00A8A171 /* CoreDataStack.swift in Sources */,
 				C188E7AF1CCA3F3400644F01 /* MapViewController.swift in Sources */,
+				C10ADB131D0EC0BC00F8AF48 /* Gnr.swift in Sources */,
 				C13DCDAC1CC8DF0600AA9098 /* GnrBuilder.swift in Sources */,
+				C10ADB121D0EC0BC00F8AF48 /* Force.swift in Sources */,
 				C154F7C11CC6A46200A8A171 /* FeaturedTableViewController.swift in Sources */,
 				C188AB701CD7616A00A8A8AE /* DetailTableViewController.swift in Sources */,
-				C18484E81CFCADB400CB0BA3 /* Gnr.swift in Sources */,
-				C18484EA1CFCADB400CB0BA3 /* Force.swift in Sources */,
+				C10ADB0E1D0EC0A500F8AF48 /* ServiceBuilder.swift in Sources */,
+				C10ADB141D0EC0BC00F8AF48 /* Psp.swift in Sources */,
 				C12CB0DC1CC541E600758F19 /* Service.swift in Sources */,
 				C1764A4D1CEDCB9A00E9E7C4 /* WebViewController.swift in Sources */,
 				C1E7AC321CBE9F11004D00A3 /* MaiAPI.swift in Sources */,
 				C105AC2C1CFF36D600284932 /* DirectionsTableViewCell.swift in Sources */,
 				C1729E221CEB38E600F0681C /* PspTableViewCell.swift in Sources */,
-				C18484E61CFCADB400CB0BA3 /* Psp.swift in Sources */,
-				C154F7C81CC7C48300A8A171 /* ServicesTableViewCell.swift in Sources */,
 				C1FE35281CBD57B200F7B745 /* XMLParser.swift in Sources */,
 				C1764A4F1CEDDE4300E9E7C4 /* TowTruckViewController.swift in Sources */,
 				C188AB721CD7617C00A8A8AE /* DetailTableViewCell.swift in Sources */,
 				C1E7AC341CBEA56C004D00A3 /* Fetcher.swift in Sources */,
+				C10ADB161D0EC0D600F8AF48 /* ServiceController.swift in Sources */,
 				C13DCDB41CC924BA00AA9098 /* SecurityBaseController.swift in Sources */,
 				C188E7AB1CCA3D2800644F01 /* PspAPIService.swift in Sources */,
 				C13DCDB01CC923CB00AA9098 /* SecurityTableViewController.swift in Sources */,
-				C1A08DD01CC40D5400906EFE /* ServiceBuilder.swift in Sources */,
 				C1EF47C01CD3757600EBF5E5 /* Utils.swift in Sources */,
+				C10ADB191D0EC0EA00F8AF48 /* ServicesTableViewCell.swift in Sources */,
 				C188E7A91CCA3ADC00644F01 /* PSPBuilder.swift in Sources */,
 				C1FA47CB1CC674B700458920 /* ServicesTableViewController.swift in Sources */,
 				C1729E201CEB381800F0681C /* GnrTableViewCell.swift in Sources */,
