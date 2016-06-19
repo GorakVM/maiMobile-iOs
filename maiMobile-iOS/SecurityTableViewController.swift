@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import CoreData
 
-class SecurityTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, CLLocationManagerDelegate {
+class SecurityTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, CLLocationManagerDelegate, UISearchControllerDelegate {
     
     enum Entity: String {
         case Force = "Force"
@@ -39,14 +39,31 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
     
     let locationManager = CLLocationManager()
     
+    var searchController: UISearchController!
+    let resultViewController = SecuritySearchResultViewController()
+    @IBOutlet weak var maskView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Selected)
         securityTableView.rowHeight = CGFloat(80)
         securityTableView.registerNib(UINib(nibName: "GnrTableViewCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.Gnr.rawValue)
         securityTableView.registerNib(UINib(nibName: "PspTableViewCell", bundle: nil), forCellReuseIdentifier: CellIdentifier.Psp.rawValue)
         
+        segmentedControl.tintColor = UIColor.whiteColor()
+        
+        //MARK: - UISearchViewController
+        resultViewController.tableView.delegate = self
+        
+        searchController = UISearchController(searchResultsController: resultViewController)
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchResultsUpdater = resultViewController
+        searchController.delegate = self
+        
+        securityTableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.sizeToFit()
         segmentedControl.tintColor = UIColor.whiteColor()
         
         createFetchedResultsController()
