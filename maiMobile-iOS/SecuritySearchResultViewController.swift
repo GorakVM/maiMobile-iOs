@@ -14,17 +14,12 @@ class SecuritySearchResultViewController: UITableViewController, UISearchResults
     var forces = [Force]()
     var filteredForces = [Force]()
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
-    
     override func viewDidLoad() {
-        
         print("view.frame.origin: \(view.frame.origin)")
         tableView.rowHeight = CGFloat(80)
         tableView.registerNib(UINib(nibName: "GnrTableViewCell", bundle: nil), forCellReuseIdentifier: "gnrCell")
         tableView.registerNib(UINib(nibName: "PspTableViewCell", bundle: nil), forCellReuseIdentifier: "pspCell")
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

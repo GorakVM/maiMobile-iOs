@@ -55,15 +55,18 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
         segmentedControl.tintColor = UIColor.whiteColor()
         
         //MARK: - UISearchViewController
-        resultViewController.tableView.delegate = self
+        
         
         searchController = UISearchController(searchResultsController: resultViewController)
+        resultViewController.tableView.delegate = self
+        searchController.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchResultsUpdater = resultViewController
-        searchController.delegate = self
+        
         
         securityTableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.sizeToFit()
+        
         segmentedControl.tintColor = UIColor.whiteColor()
         
         createFetchedResultsController()
@@ -112,7 +115,7 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
         )
         request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
     }
-
+    
     // MARK: - Table view data source
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -120,7 +123,8 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        //        return fetchedResultsController.fetchedObjects?.count ?? 0
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -151,6 +155,16 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
         showViewController(detailTableviewController, sender: self)
         
     }
+    
+    //    MARK: - CLLocationManagerDelegate
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let latestUserLocation = locations.last!
+        setDistanceToManagedObjects(latestUserLocation)
+        manager.stopUpdatingLocation()
+    }
+    
+    //    MARK: - Custom Methods
     
     func getCellForGnrTypeAtIndexPathWithForceObject(tableView: UITableView, indexPath: NSIndexPath, force: Force) -> GnrTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier.Gnr.rawValue, forIndexPath: indexPath) as! GnrTableViewCell
@@ -188,12 +202,6 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
         updateFetchedResultsControllerFetchRequest()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let latestUserLocation = locations.last!
-        setDistanceToManagedObjects(latestUserLocation)
-        manager.stopUpdatingLocation()
-    }
-    
     func setDistanceToManagedObjects(userLocation: CLLocation) {
         let privateContext = fetcher.sharedPrivateContext
         let request = NSFetchRequest(entityName: "Force")
@@ -213,7 +221,7 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
             }
             
         }
-                
+        
     }
     
     // MARK: - NSFetchedResultsControllerDelegate
@@ -240,5 +248,16 @@ class SecurityTableViewController: UIViewController, UITableViewDataSource, UITa
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         securityTableView.endUpdates()
     }
+ 
+//    MARK: - UISearchControllerDelegate
+    
+    func willPresentSearchController(searchController: UISearchController) {
+        self.definesPresentationContext = true
+    }
+    
+    func didPresentSearchController(searchController: UISearchController) {
+        self.definesPresentationContext = false
+    }
+    
     
 }
