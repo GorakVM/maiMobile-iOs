@@ -15,44 +15,62 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var forcesFetchResultController: NSFetchedResultsController!
+    var fetchResultController: NSFetchedResultsController!
     let fetcher = Fetcher()
     
     var mapDidZoomToRegion: Bool = false
     
     class CustomPointAnnotation: MKPointAnnotation {
+        enum Action {
+            case load
+            case remove
+        }
+        
         var force: Force!
         var image: UIImage!
     }
     
     let locationManager = CLLocationManager()
     let isLocationServicesEnabled = CLLocationManager.locationServicesEnabled()
-    var forceAnnotation = [CustomPointAnnotation]()
+    var forceAnnotations = [CustomPointAnnotation]()
+    
+    let fetchAllForces = NSFetchRequest(entityName: "Force")
+    let fetchAllGnr = NSFetchRequest(entityName: "Gnr")
+    let fetchAllPsp = NSFetchRequest(entityName: "Psp")
+    
+    let operationQueue = NSOperationQueue()
+    
+    
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBAction func segmentedControlAction(sender: UISegmentedControl) {
+        setFetchRequestFromSelectedSegment()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
-        
-        let fetchAllForces = NSFetchRequest(entityName: "Force")
-        fetchAllForces.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        forcesFetchResultController = NSFetchedResultsController(fetchRequest: fetchAllForces, managedObjectContext: fetcher.sharedMainContext, sectionNameKeyPath: nil, cacheName: nil)
-        forcesFetchResultController.delegate = self
-        try! forcesFetchResultController.performFetch()
-        updateAnnotationsToMap()
+        segmentedControl.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.blackColor()], forState: UIControlState.Selected)
+        fetchForces(fetchAllForces)
         
         mapView.delegate = self
         mapView.showsUserLocation = true
         
-        if isLocationServicesEnabled {
-            if let userLocation = mapView.userLocation.location {
-                setZoomToRegion(userLocation)
-            }
+        if let userLocation = mapView.userLocation.location {
+            setZoomToRegion(userLocation)
+        } else {
+            //Set Region To Lisbon
+            setZoomToRegion(CLLocation(latitude: 38.7222524, longitude: -9.1393366))
         }
         
         setAnnotationsForVisibleRectInMap()
     }// end viewdidload
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        operationQueue.cancelAllOperations()
+    }
     
     // MARK: - CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -66,28 +84,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: - MKMapViewDelegate
+    
     func mapViewDidFinishLoadingMap(mapView: MKMapView) {
-        setAnnotationsForVisibleRectInMap()
+        //        setAnnotationsForVisibleRectInMap()
     }
     
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         setZoomToRegion(userLocation.location!)
-        setAnnotationsForVisibleRectInMap()
-    }
-    
-    func setZoomToRegion(location: CLLocation) {
-        if !mapDidZoomToRegion {
-            let span = MKCoordinateSpanMake(0.25, 0.25)
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: span)
-            mapView.setRegion(region, animated: true)
-            mapDidZoomToRegion = true
-        }
-        
+        //        setAnnotationsForVisibleRectInMap()
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        setAnnotationsForVisibleRectInMap()
+//        operationQueue.cancelAllOperations()
+//        let annotations = mapView.annotations as! [CustomPointAnnotation]
+//        let operation = NSBlockOperation()
+//        operation.addExecutionBlock {
+//            for annotation in annotations {
+//                if self.isAnnotationVisibleInMapRect(annotation) {
+//                    NSOperationQueue.mainQueue().addOperationWithBlock({
+//                        self.mapView.removeAnnotation(annotation)
+//                        if operation.finished {
+//                                self.setAnnotationsForVisibleRectInMap()
+//                        }
+//                    })
+//                }
+//                
+//            }
+//        }
+//        
+//        
+//        
+        
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -126,48 +153,116 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: - Custom Methods
-    func setAnnotationsForVisibleRectInMap() {
-        let mapRect = mapView.visibleMapRect
-        
-        for annotation in forceAnnotation {
-            let pointForAnnotation = MKMapPointForCoordinate(annotation.coordinate)
-            let isAnnotationInVisibleRect = MKMapRectContainsPoint(mapRect, pointForAnnotation)
-            if isAnnotationInVisibleRect {
-                NSOperationQueue.mainQueue().addOperationWithBlock({
-                    self.mapView.addAnnotation(annotation)
-                })
-            } else {
-                NSOperationQueue.mainQueue().addOperationWithBlock({
-                    self.mapView.removeAnnotation(annotation)
-                })
-            }
+    
+    func setZoomToRegion(location: CLLocation) {
+        if !mapDidZoomToRegion {
+            let span = MKCoordinateSpanMake(0.10, 0.10)
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: span)
+            mapView.setRegion(region, animated: true)
+            mapDidZoomToRegion = true
         }
         
     }
     
-    func updateAnnotationsToMap() {
-        for force in forcesFetchResultController.fetchedObjects as! [Force] {
-            let annotation = CustomPointAnnotation()
-            annotation.force = force
-            annotation.coordinate = CLLocationCoordinate2D(latitude: force.latitude, longitude: force.longitude)
-            annotation.title = force.name
-            switch force.forceType {
-            case Force.ForceType.Gnr.rawValue:
-                annotation.image = UIImage(named: "gnr")
-            case Force.ForceType.Psp.rawValue:
-                let psp = (force as! Psp)
-                annotation.subtitle = psp.desc
-                annotation.image = UIImage(named: "psp")
-            default:
-                break
+    private func setFetchRequestFromSelectedSegment () {
+        operationQueue.cancelAllOperations()
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            fetchForces(fetchAllForces)
+        case 1:
+            fetchForces(fetchAllGnr)
+        case 2:
+            fetchForces(fetchAllPsp)
+        default: break
+        }
+    }
+    
+    private func fetchForces(fetchRequest: NSFetchRequest) {
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: fetcher.sharedMainContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultController.delegate = self
+        try! fetchResultController.performFetch()
+        setAnnotationsForVisibleRectInMap()
+    }
+    
+    private func setAnnotationsForVisibleRectInMap() {
+        print("fetchResultController fetchedObjects count: \(fetchResultController.fetchedObjects?.count)")
+        let operation = NSBlockOperation()
+        weak var weakOperation = operation
+        operation.addExecutionBlock {
+            for force in self.fetchResultController.fetchedObjects as! [Force] {
+                print("weakOperation!.cancelled: \(weakOperation!.cancelled)")
+                if weakOperation!.cancelled {
+                    print("operation Canceled")
+                    NSOperationQueue.mainQueue().addOperationWithBlock({
+                        self.mapView.removeAnnotations(self.mapView.annotations)
+                    })
+                    
+                    return}
+                let annotation = self.setCustomAnnotation(force)
+                if self.isAnnotationVisibleInMapRect(annotation) {
+                    self.manageAnnotationToMap(annotation, action: .load)
+                } else {
+                    self.manageAnnotationToMap(annotation, action: .remove)
+                    
+                }
+                self.forceAnnotations.append(annotation)
+                
             }
-            forceAnnotation.append(annotation)
+            
+        }
+        
+        operationQueue.addOperation(operation)
+        
+    }
+    
+    private func setCustomAnnotation(force: Force) -> CustomPointAnnotation {
+        let customAnnotation = CustomPointAnnotation()
+        customAnnotation.force = force
+        customAnnotation.coordinate = CLLocationCoordinate2D(latitude: force.latitude, longitude: force.longitude)
+        customAnnotation.title = force.name
+        
+        switch force.forceType {
+        case Force.ForceType.Gnr.rawValue:
+            customAnnotation.image = UIImage(named: "gnr")
+        case Force.ForceType.Psp.rawValue:
+            let psp = (force as! Psp)
+            customAnnotation.subtitle = psp.desc
+            customAnnotation.image = UIImage(named: "psp")
+        default:
+            break
+        }
+        return customAnnotation
+    }
+    
+    private func isAnnotationVisibleInMapRect(annotation: CustomPointAnnotation) -> Bool {
+        let mapRect = mapView.visibleMapRect
+        let pointForAnnotation = MKMapPointForCoordinate(annotation.coordinate)
+        return MKMapRectContainsPoint(mapRect, pointForAnnotation)
+    }
+    
+    private func manageAnnotationToMap(annotation: CustomPointAnnotation, action: CustomPointAnnotation.Action) {
+        
+        if !mapView.annotations.contains({ (annotationToCompate) -> Bool in
+            return annotationToCompate === annotation
+        }) {
+            switch action {
+            case .load:
+                NSOperationQueue.mainQueue().addOperationWithBlock({
+                    self.mapView.addAnnotation(annotation)
+                })
+            case .remove:
+                NSOperationQueue.mainQueue().addOperationWithBlock({
+                    self.mapView.removeAnnotation(annotation)
+                })
+                
+            }
         }
     }
     
     // MARK: - NSFetchedResultsControllerDelegate
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        updateAnnotationsToMap()
         setAnnotationsForVisibleRectInMap()
     }
     
