@@ -95,26 +95,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//        operationQueue.cancelAllOperations()
-//        let annotations = mapView.annotations as! [CustomPointAnnotation]
-//        let operation = NSBlockOperation()
-//        operation.addExecutionBlock {
-//            for annotation in annotations {
-//                if self.isAnnotationVisibleInMapRect(annotation) {
-//                    NSOperationQueue.mainQueue().addOperationWithBlock({
-//                        self.mapView.removeAnnotation(annotation)
-//                        if operation.finished {
-//                                self.setAnnotationsForVisibleRectInMap()
-//                        }
-//                    })
-//                }
-//                
-//            }
-//        }
-//        
-//        
-//        
-        
+        let visibleAnnotations = mapView.annotations
+        mapView.removeAnnotations(visibleAnnotations)
+        setAnnotationsForVisibleRectInMap()
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -167,6 +150,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     private func setFetchRequestFromSelectedSegment () {
         operationQueue.cancelAllOperations()
+        let visibleAnnotations = mapView.annotations
+        mapView.removeAnnotations(visibleAnnotations)
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             fetchForces(fetchAllForces)
@@ -192,14 +177,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         weak var weakOperation = operation
         operation.addExecutionBlock {
             for force in self.fetchResultController.fetchedObjects as! [Force] {
-                print("weakOperation!.cancelled: \(weakOperation!.cancelled)")
                 if weakOperation!.cancelled {
                     print("operation Canceled")
-                    NSOperationQueue.mainQueue().addOperationWithBlock({
-                        self.mapView.removeAnnotations(self.mapView.annotations)
-                    })
-                    
-                    return}
+                    break}
                 let annotation = self.setCustomAnnotation(force)
                 if self.isAnnotationVisibleInMapRect(annotation) {
                     self.manageAnnotationToMap(annotation, action: .load)
@@ -243,9 +223,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     private func manageAnnotationToMap(annotation: CustomPointAnnotation, action: CustomPointAnnotation.Action) {
+
         
-        if !mapView.annotations.contains({ (annotationToCompate) -> Bool in
-            return annotationToCompate === annotation
+        
+        if !mapView.annotations.contains({ (annotationToCompare) -> Bool in
+            return annotationToCompare === annotation
         }) {
             switch action {
             case .load:
